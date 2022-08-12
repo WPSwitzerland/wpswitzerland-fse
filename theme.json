@@ -14,10 +14,7 @@
 			"customGradient": true,
 			"duotone": [
 				{
-					"colors": [
-						"#00334D",
-						"#0073aa"
-					],
+					"colors": ["#00334D", "#0073aa"],
 					"name": "WordPress blue",
 					"slug": "wordpress-blue"
 				}
@@ -92,13 +89,7 @@
 		},
 		"spacing": {
 			"blockGap": true,
-			"units": [
-				"px",
-				"em",
-				"rem",
-				"vh",
-				"vw"
-			]
+			"units": ["px", "em", "rem", "vh", "vw"]
 		},
 		"typography": {
 			"fontFamilies": [
@@ -240,7 +231,6 @@
 			"core/site-title": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--primary)",
-					"fontSize": "var(--wp--custom--font-sizes--step-r)",
 					"fontWeight": "700"
 				}
 			}

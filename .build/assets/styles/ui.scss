@@ -28,7 +28,7 @@ $context: 'view';
 .wp-block-group
 	> :where(:not(.alignwide):not(.alignfull):not(.wp-block-post-content)) {
 	margin-left: 0 !important;
-	max-width: var(--constraint--narrow);
+	max-width: var(--constraint-narrow);
 }
 
 .site-brand {

@@ -24,14 +24,8 @@
 		@extend .h-stack;
 		padding-top: var(--unit);
 		padding-bottom: var(--unit);
-		max-width: var(--constraint--wide) !important;
+		max-width: var(--constraint-wide) !important;
 		color: inherit !important;
-
-		> .wp-block-group {
-			max-width: var(--constraint-wide);
-			margin-left: auto;
-			margin-right: auto;
-		}
 	}
 
 	h1,
