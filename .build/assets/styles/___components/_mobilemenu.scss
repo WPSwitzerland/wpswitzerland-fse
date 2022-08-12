@@ -3,7 +3,7 @@
 		display: none;
 		box-sizing: border-box;
 		position: fixed;
-		top: var(--masthead--height);
+		top: var(--header--height);
 		bottom: 0;
 		left: 0;
 		// Don't use "right" here: it creates a scroll overflow

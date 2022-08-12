@@ -1,3 +1,12 @@
+:root,
+body {
+	--header--height: #{rem-calc(85px)};
+
+	@include breakpoint(wide) {
+		--header--height: #{rem-calc(104px)};
+	}
+}
+
 .c-header {
 	position: fixed;
 	top: 0;
@@ -6,7 +15,28 @@
 	z-index: 1972;
 	background-color: transparent !important;
 	border: none;
-	border-bottom: 1px solid var(--wp--preset--color--tertiary);
+	@extend %h-guttered;
+
+	&::after {
+		content: '';
+		opacity: 0;
+		transition: opacity 500ms ease;
+		@include flood;
+		background-color: var(--wp--preset--color--secondary) !important;
+		z-index: 0;
+	}
+
+	* {
+		z-index: 1;
+	}
+
+	&.with--background {
+		backdrop-filter: blur(10px);
+
+		&::after {
+			opacity: 0.6;
+		}
+	}
 
 	&__logo {
 		display: inline-block;

@@ -137,6 +137,10 @@ ul {
 	}
 }
 
+.has-large-font-size {
+	letter-spacing: -0.01em;
+}
+
 p.has-medium-font-size {
 	--wp--preset--font-size--medium: clamp(
 		1.06rem,
