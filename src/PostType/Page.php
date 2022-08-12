@@ -38,7 +38,10 @@ class Page
 				],
 				[
 					[
-						"core/group", [], [
+						"core/group", [
+							"align" => "wide",
+							"layout" => ["inherit" => true]
+						], [
 							['core/post-title', ["level" => 1, "align" => "wide", "textColor" => "white"]],
 						]
 					]
