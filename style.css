@@ -1,13 +1,14 @@
-/*
-Theme Name: Hello FSE
-Theme URI: https: //github.com/SayHelloGmbH/hello-fse
-Author: Say Hello GmbH
-Description: Stripped-back basis WordPress Theme for use with Full Site Editing
-Requires at least: 6.0
-Tested up to: 6.0
-Requires PHP: 8.0
-Version: 0.0.0
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Text Domain: sht
+/*!
+Theme Name:         WordPress Switzerland
+Theme URI:          https://github.com/WPSwitzerland/blockbase-child-2022
+Author:             Contributors from the Swiss WordPress community
+Author URI:         https://wpswitzerland.ch
+Description:        A Full-Site-Editing Theme for the WordPress Switzerland website.
+Version:            0.1.0
+License:            GNU General Public License v3 or later
+License URI:        https://www.gnu.org/licenses/gpl.html
+Text Domain:        wpswitzerland
+Domain Path:        /languages
+Requires PHP:       8.0
+Requires at least:  5.9
 */
