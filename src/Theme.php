@@ -62,6 +62,8 @@ class Theme
 				Package\Navigation::class,
 				Package\Shyify::class,
 
+				PostType\Page::class,
+
 			]
 		);
 
