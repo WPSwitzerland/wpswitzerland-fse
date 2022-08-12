@@ -1,0 +1,39 @@
+.wp-block-rss {
+	&--with-images {
+		.wp-block-rss {
+			&__entries {
+				@extend .h-stack;
+				--stack-size: var(--wp--style--block-gap);
+
+				@include breakpoint(tablet) {
+					display: grid;
+					gap: var(--wp--style--block-gap);
+					grid-template-columns: repeat(3, minmax(0, 1fr));
+				}
+			}
+
+			&__entry {
+				@extend .h-stack;
+				--stack-size: var(--wp--style--block-gap);
+
+				@include breakpoint(tablet) {
+					margin-top: 0;
+				}
+			}
+
+			&__entrytitle {
+				font-size: var(--wp--custom--font-sizes--step-1);
+				--wp--style--block-gap: 0;
+			}
+
+			&__entrylink {
+				font-size: var(--wp--custom--font-sizes--step-2);
+				word-break: break-all;
+			}
+
+			&__entrylinkwrapper {
+				--wp--style--block-gap: 0;
+			}
+		}
+	}
+}

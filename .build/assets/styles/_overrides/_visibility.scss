@@ -13,7 +13,7 @@
 			}
 		}
 		&--desktop {
-			@include breakpoint(laptop) {
+			@include breakpoint(wide) {
 				display: none !important;
 			}
 		}

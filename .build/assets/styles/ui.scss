@@ -22,3 +22,44 @@ $context: 'view';
 @import '___components/__all.components';
 @import '__blocks/__all.blocks';
 @import '_overrides/__all.overrides';
+
+.wp-block-cover__inner-container > :where(:not(.alignwide):not(.alignfull)),
+.wp-block-post-content > :where(:not(.alignwide):not(.alignfull)),
+.wp-block-group
+	> :where(:not(.alignwide):not(.alignfull):not(.wp-block-post-content)) {
+	margin-left: 0 !important;
+	max-width: var(--constraint--narrow);
+}
+
+.site-brand {
+	--wp--style--block-gap: 1vw;
+	color: var(--wp--preset--color--white);
+}
+
+@media screen and (min-width: 1500px) {
+	.site-brand {
+		transform: translateX(-84px) translateX(-1vw);
+	}
+}
+
+.site-header {
+	justify-content: space-between !important;
+	padding: 2vw;
+}
+
+.site-header > :first-child {
+	margin-right: auto;
+}
+
+@media screen and (max-width: 599px) {
+	.site-header .wp-block-polylang-language-switcher {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	.site-header {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

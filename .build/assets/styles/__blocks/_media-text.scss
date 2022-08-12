@@ -12,6 +12,9 @@
 	.wp-block-media-text {
 		&__content {
 			padding: var(--unit--medium) var(--unit);
+
+			@extend .h-stack;
+			--stack-size: var(--wp--style--block-gap);
 		}
 	}
 }

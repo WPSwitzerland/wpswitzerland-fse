@@ -1,0 +1,13 @@
+.pll-switcher-select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background: url('img/icons/expand_more_FILL0_wght400_GRAD0_opsz48.svg')
+		right 0.5em center no-repeat;
+	background-size: 1.25em;
+	padding-right: 2em;
+	border: none;
+
+	/*color: var(--wp--preset--color--white);*/
+	--wp--custom--form--color--text: var(--wp--preset--color--white);
+}

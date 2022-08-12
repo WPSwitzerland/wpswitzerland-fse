@@ -1,0 +1,13 @@
+.wp-block-site-logo {
+	margin: 0 !important;
+
+	@include breakpoint(desktop) {
+		.wp-block-site-logo {
+			width: 84px;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+}

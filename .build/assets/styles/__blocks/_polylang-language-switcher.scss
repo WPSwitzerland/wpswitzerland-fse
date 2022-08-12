@@ -1,0 +1,18 @@
+.wp-block-polylang-language-switcher {
+	&.is-style-inline-list {
+		padding-left: 0;
+		list-style: none;
+		display: flex;
+		gap: 1em;
+		justify-content: center;
+
+		li {
+			display: inline-block;
+		}
+	}
+
+	.c-header &,
+	.c-footer & {
+		font-size: var(--wp--preset--font-size--x-small) !important;
+	}
+}

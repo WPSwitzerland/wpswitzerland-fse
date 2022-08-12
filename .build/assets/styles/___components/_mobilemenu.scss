@@ -15,7 +15,7 @@
 		height: calc(var(--vh) * 100);
 		overflow: auto;
 
-		@include breakpoint(laptop) {
+		@include breakpoint(wide) {
 			display: none;
 		}
 

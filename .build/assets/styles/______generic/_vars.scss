@@ -1,6 +1,7 @@
 // Base size '--wp--custom--spacing-unit' read in from theme.json
 // Re-defined here as --unit for brevity.
 
+:root,
 body {
 	--unit: var(--wp--custom--spacing-unit);
 	--unit--xxxxsmall: calc(var(--unit) / 12);

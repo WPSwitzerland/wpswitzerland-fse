@@ -1,4 +1,13 @@
 .c-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1972;
+	background-color: transparent !important;
+	border: none;
+	border-bottom: 1px solid var(--wp--preset--color--tertiary);
+
 	&__logo {
 		display: inline-block;
 		margin: var(--unit) 0;

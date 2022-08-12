@@ -1,13 +1,30 @@
 .wp-block-cover {
+	padding: var(--space--s);
+
 	&.has-background-dim {
 		color: var(--wp--preset--color--white);
 	}
 
+	&.c-pageheader {
+		min-height: 50vw;
+
+		@include breakpoint(tablet) {
+			min-height: 30vw;
+		}
+
+		@include breakpoint(tablet_landscape) {
+			min-height: 20vw;
+		}
+	}
+
 	&__inner-container {
+		width: 100% !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
 		@extend .h-stack;
 		padding-top: var(--unit);
 		padding-bottom: var(--unit);
-		max-width: var(--constraint-narrow);
+		max-width: var(--constraint--wide) !important;
 		color: inherit !important;
 	}
 }

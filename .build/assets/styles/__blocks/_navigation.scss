@@ -1,7 +1,24 @@
 .wp-block-navigation {
-    &-item {
-        &.current-menu-item {
-            color: var(--wp--preset--color--primary);
-        }
-    }
+	color: var(--wp--preset--color--white);
+	--wp--custom--navigation--submenu--border--width: 0;
+	--wp--custom--navigation--submenu--color--background: rgba(
+		255,
+		255,
+		255,
+		0.2
+	);
+
+	@include breakpoint(tablet) {
+		--wp--custom--navigation--submenu--color--text: var(
+			--wp--preset--color--white
+		);
+	}
+
+	a {
+		font-weight: inherit;
+	}
+
+	&__submenu-container {
+		color: var(--wp--preset--color--white) !important;
+	}
 }
