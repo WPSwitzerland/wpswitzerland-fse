@@ -26,6 +26,23 @@
 		padding-bottom: var(--unit);
 		max-width: var(--constraint--wide) !important;
 		color: inherit !important;
+
+		> .wp-block-group {
+			max-width: var(--constraint-wide);
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.wp-block-post-title {
+		max-width: var(--constraint-narrow) !important;
+		margin-left: 0 !important;
 	}
 }
 
