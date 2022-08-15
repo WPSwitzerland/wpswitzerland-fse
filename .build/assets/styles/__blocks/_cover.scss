@@ -42,7 +42,7 @@
 	}
 }
 
-.wp-block-post-content .wp-block-cover:first-child:after {
+.wp-block-post-content > .wp-block-cover:first-child:after {
 	content: '';
 	@include flood;
 	z-index: 1;

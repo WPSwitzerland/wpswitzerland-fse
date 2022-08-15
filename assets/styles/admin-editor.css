@@ -1137,7 +1137,7 @@ body {
   margin-left: 0 !important;
 }
 
-.wp-block-post-content .wp-block-cover:first-child:after {
+.wp-block-post-content > .wp-block-cover:first-child:after {
   content: "";
   position: absolute;
   top: 0;
