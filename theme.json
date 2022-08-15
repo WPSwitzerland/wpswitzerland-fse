@@ -47,6 +47,11 @@
 					"color": "#F0F0F0",
 					"name": "Tertiary",
 					"slug": "tertiary"
+				},
+				{
+					"color": "#1d2327",
+					"name": "Darkest gray",
+					"slug": "darkest-gray"
 				}
 			],
 			"text": true

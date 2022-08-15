@@ -1,6 +1,12 @@
 const header = document.querySelector('.c-header'),
-	stuck = () => {
-		if (window.scrollY > 100) {
+	cover = document.querySelector(
+		'.wp-block-post-content .wp-block-cover:first-child'
+	);
+
+const stuck = () => {
+		const edge = !!cover ? cover.offsetHeight : window.innerHeight * 0.1;
+
+		if (window.scrollY > edge - header.offsetHeight * 1.5) {
 			header.classList.add('with--background');
 		} else {
 			header.classList.remove('with--background');

@@ -1,4 +1,21 @@
 .c-footer {
 	@extend %h-guttered;
-	background: pink;
+	position: relative;
+
+	> * {
+		position: relative;
+		z-index: 2;
+	}
+
+	&:after {
+		content: '';
+		@include flood;
+		z-index: 1;
+		opacity: 0.025;
+		background-image: url('../img/cover-background-pattern.svg');
+	}
+
+	.wp-block-polylang-language-switcher.is-style-inline-list {
+		justify-content: flex-end;
+	}
 }

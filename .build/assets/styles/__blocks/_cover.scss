@@ -17,7 +17,7 @@
 		}
 	}
 
-	&__inner-container {
+	.wp-block-cover__inner-container {
 		width: 100% !important;
 		margin-left: auto !important;
 		margin-right: auto !important;
@@ -26,6 +26,8 @@
 		padding-bottom: var(--unit);
 		max-width: var(--constraint-wide) !important;
 		color: inherit !important;
+		z-index: 2;
+		position: relative;
 	}
 
 	h1,
@@ -38,6 +40,14 @@
 		max-width: var(--constraint-narrow) !important;
 		margin-left: 0 !important;
 	}
+}
+
+.wp-block-post-content .wp-block-cover:first-child:after {
+	content: '';
+	@include flood;
+	z-index: 1;
+	opacity: 0.025;
+	background-image: url('../img/cover-background-pattern.svg');
 }
 
 @include context-edit {

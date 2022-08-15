@@ -17,12 +17,20 @@ body {
 	border: none;
 	@extend %h-guttered;
 
+	&::before {
+		content: '';
+		opacity: 0;
+		@include flood;
+		z-index: 1;
+		background-image: url('../img/cover-background-pattern.svg');
+	}
+
 	&::after {
 		content: '';
 		opacity: 0;
-		transition: opacity 500ms ease;
+		transition: opacity 800ms ease;
 		@include flood;
-		background-color: var(--wp--preset--color--secondary) !important;
+		background-color: var(--wp--preset--color--darkest-gray) !important;
 		z-index: 0;
 	}
 
@@ -33,8 +41,12 @@ body {
 	&.with--background {
 		backdrop-filter: blur(10px);
 
+		&::before {
+			opacity: 0.025;
+		}
+
 		&::after {
-			opacity: 0.6;
+			opacity: 0.8;
 		}
 	}
 
