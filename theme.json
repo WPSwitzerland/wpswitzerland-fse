@@ -1,6 +1,6 @@
 {
 	"settings": {
-		"appearanceTools": false,
+		"appearanceTools": true,
 		"border": {
 			"color": false,
 			"radius": false,
