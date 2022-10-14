@@ -142,22 +142,6 @@
 					"slug": "primary"
 				},
 				{
-					"fontFace": [
-						{
-							"fontFamily": "Gilroy",
-							"fontStretch": "normal",
-							"fontStyle": "normal",
-							"fontWeight": "900",
-							"src": [
-								"file:./assets/fonts/Gilroy-ExtraBold.woff2"
-							]
-						}
-					],
-					"fontFamily": "Gilroy, sans-serif",
-					"name": "Gilroy",
-					"slug": "secondary"
-				},
-				{
 					"fontFamily": "monospace",
 					"name": "Monospace",
 					"slug": "monospace"
