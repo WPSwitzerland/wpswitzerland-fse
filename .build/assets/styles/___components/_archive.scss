@@ -2,11 +2,13 @@
 	@extend .h-stack;
 
 	&__content {
-		@extend .h-stack--medium;
+		@extend .h-stack;
+		--stack-size: var(--unit--medium);
 	}
 
 	&__entries {
-		@extend .h-stack--medium;
+		@extend .h-stack;
+		--stack-size: var(--unit--medium);
 	}
 
 	&__header {

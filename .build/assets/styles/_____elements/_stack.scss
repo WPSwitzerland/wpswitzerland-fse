@@ -13,34 +13,4 @@
 			margin-top: var(--stack-size);
 		}
 	}
-
-	&--small {
-		> * + * {
-			--stack-size: var(--unit--small);
-		}
-	}
-
-	&--xsmall {
-		> * + * {
-			--stack-size: var(--unit--xsmall);
-		}
-	}
-
-	&--medium {
-		> * + * {
-			--stack-size: var(--unit--medium);
-		}
-	}
-
-	&--large {
-		> * + * {
-			--stack-size: var(--unit--large);
-		}
-	}
-
-	&--xlarge {
-		> * + * {
-			--stack-size: var(--unit--xlarge);
-		}
-	}
 }

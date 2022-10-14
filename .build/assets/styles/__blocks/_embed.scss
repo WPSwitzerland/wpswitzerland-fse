@@ -1,5 +1,6 @@
 .wp-block-embed {
-	@extend .h-stack--small;
+	@extend .h-stack;
+	--stack-size: var(--unit--small);
 	margin-left: auto;
 	margin-right: auto;
 

@@ -111,7 +111,7 @@ li {
 ol {
 	padding-left: 0;
 	list-style: none;
-	@extend .h-stack--small;
+	@extend .h-stack;
 	counter-reset: item;
 
 	li:before {
@@ -129,12 +129,15 @@ ol {
 ul {
 	padding-left: 1.2em;
 	list-style: revert;
-	@extend .h-stack--small;
+	@extend .h-stack;
 
 	ul {
 		--wp--custom--gap--horizontal: 0.5em;
-		margin-top: var(--unit);
 	}
+}
+
+li::marker {
+	content: '–\00a0\00a0';
 }
 
 .has-large-font-size {

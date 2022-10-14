@@ -1,5 +1,6 @@
 .c-article {
-	@extend .h-stack--medium;
+	@extend .h-stack;
+	--stack-size: var(--unit--medium);
 
 	&__header {
 		@extend .h-stack;

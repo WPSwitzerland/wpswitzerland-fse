@@ -75,7 +75,9 @@ body {
 	}
 
 	.comment-meta {
-		@extend .h-stack--small;
+		@extend .h-stack;
+		--stack-size: var(--unit--small);
+
 		@include breakpoint(tablet) {
 			display: flex;
 			justify-content: space-between;

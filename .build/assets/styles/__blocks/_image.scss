@@ -1,5 +1,6 @@
 .wp-block-image {
-	@extend .h-stack--small;
+	@extend .h-stack;
+	--stack-size: var(--unit--small);
 
 	figcaption {
 		margin-top: var(--stack-size); // override core
