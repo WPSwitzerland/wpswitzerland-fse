@@ -1,0 +1,21 @@
+.site-header {
+	justify-content: space-between !important;
+	padding: 1vw 2vw;
+}
+
+.site-header > :first-child {
+	margin-right: auto;
+}
+
+@media screen and (max-width: 599px) {
+	.site-header .wp-block-polylang-language-switcher {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	.site-header {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
