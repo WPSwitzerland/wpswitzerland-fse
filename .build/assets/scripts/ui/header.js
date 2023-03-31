@@ -4,9 +4,7 @@ const header = document.querySelector('.c-header'),
 	);
 
 const stuck = () => {
-		const edge = !!cover ? cover.offsetHeight : window.innerHeight * 0.1;
-
-		if (window.scrollY > edge - header.offsetHeight * 1.5) {
+		if (window.scrollY > 50) {
 			header.classList.add('with--background');
 		} else {
 			header.classList.remove('with--background');
