@@ -3,6 +3,12 @@
 	color: var(--wp--preset--color--white);
 }
 
+@media screen and (min-width: 1440px) {
+	.site-brand {
+		transform: translateX(-84px) translateX(-1vw);
+	}
+}
+
 @media screen and (min-width: 1500px) {
 	.site-brand {
 		transform: translateX(-84px) translateX(-1vw);

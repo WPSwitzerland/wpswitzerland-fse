@@ -1,4 +1,13 @@
 .wp-block-navigation {
+	&__responsive-container-close {
+		left: 0;
+		right: auto;
+	}
+
+	&__responsive-container-content {
+		--navigation-layout-justification-setting: flex-start;
+	}
+
 	&__submenu-container {
 		border: none !important;
 		padding: 1rem !important;
