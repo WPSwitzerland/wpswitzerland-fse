@@ -10,4 +10,10 @@
 	border: none;
 	color: inherit;
 	--wp--custom--form--color--text: var(--wp--preset--color--white);
+
+	&:focus option,
+	&:focus option:hover,
+	&:focus option:active {
+		color: var(--wp--preset--color--black) !important;
+	}
 }
