@@ -1,0 +1,7 @@
+ul {
+	&.is-style-less-gap {
+		> * + * {
+			margin-top: 0.5em;
+		}
+	}
+}
