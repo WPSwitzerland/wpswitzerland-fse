@@ -14,7 +14,10 @@
 			"customGradient": true,
 			"duotone": [
 				{
-					"colors": ["#00334D", "#0073aa"],
+					"colors": [
+						"#00334D",
+						"#0073aa"
+					],
 					"name": "WordPress blue",
 					"slug": "wordpress-blue"
 				}
@@ -26,7 +29,6 @@
 					"slug": "wordpress-blue"
 				}
 			],
-			"link": true,
 			"palette": [
 				{
 					"color": "#0073aa",
@@ -52,6 +54,16 @@
 					"color": "#1d2327",
 					"name": "Darkest gray",
 					"slug": "darkest-gray"
+				},
+				{
+					"color": "#b5007c",
+					"name": "Geneva 2021",
+					"slug": "custom-geneva-2021"
+				},
+				{
+					"color": "#cc8866",
+					"name": "Murten 2023",
+					"slug": "custom-murten-2023"
 				}
 			],
 			"text": true
@@ -93,8 +105,20 @@
 			"wideSize": "1280px"
 		},
 		"spacing": {
-			"blockGap": true,
-			"units": ["px", "em", "rem", "vh", "vw"]
+			"spacingScale": {
+				"increment": 1.5,
+				"mediumStep": 1.5,
+				"operator": "*",
+				"steps": 6,
+				"unit": "rem"
+			},
+			"units": [
+				"px",
+				"em",
+				"rem",
+				"vh",
+				"vw"
+			]
 		},
 		"typography": {
 			"fontFamilies": [
@@ -205,6 +229,14 @@
 					"fontWeight": "600"
 				}
 			},
+			"core/columns": {
+				"spacing": {
+					"blockGap": {
+						"left": "var:preset|spacing|50",
+						"top": "var:preset|spacing|50"
+					}
+				}
+			},
 			"core/heading": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--secondary)",
@@ -269,7 +301,7 @@
 			}
 		},
 		"spacing": {
-			"blockGap": "2vw"
+			"blockGap": "1rem"
 		},
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--primary)",
@@ -289,5 +321,6 @@
 			"title": "Footer"
 		}
 	],
-	"version": 2
+	"version": 2,
+	"$schema": "https://schemas.wp.org/wp/6.2/theme.json"
 }

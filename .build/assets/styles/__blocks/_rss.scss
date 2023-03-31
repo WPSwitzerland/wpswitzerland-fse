@@ -1,4 +1,14 @@
 .wp-block-rss {
+	&__item {
+		&::marker {
+			content: '' !important;
+		}
+
+		&-publish-date {
+			margin-top: 0 !important;
+		}
+	}
+
 	&--with-images {
 		.wp-block-rss {
 			&__entries {
