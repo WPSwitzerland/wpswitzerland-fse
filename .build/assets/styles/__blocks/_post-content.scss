@@ -6,6 +6,10 @@
 		margin-top: 0;
 	}
 
+	li::marker {
+		content: '–\00a0\00a0';
+	}
+
 	& > * + h1,
 	& > * + h2,
 	& > * + h3,
