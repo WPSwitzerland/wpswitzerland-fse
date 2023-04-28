@@ -15,7 +15,7 @@ if (!function_exists('dump')) {
 }
 
 $php_required = '8.0';
-$wp_required = '6.0';
+$wp_required = '6.2';
 
 if (version_compare(get_bloginfo('version'), $wp_required, '<') || version_compare(PHP_VERSION, $php_required, '<')) {
 	add_action(
