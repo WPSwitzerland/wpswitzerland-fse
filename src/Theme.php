@@ -56,6 +56,7 @@ class Theme
 		$this->loadClasses(
 			[
 				// Block\Menu::class,
+				Blocks\EventsAPI\Block::class,
 
 				Package\Assets::class,
 				Package\Gutenberg::class,
