@@ -9,8 +9,12 @@ const App = ({ element: { dataset }, classNameBase }) => {
 	const { root: api_root, nonce } = wpApiSettings;
 	const { url } = dataset;
 
-	const language_full = document.documentElement.lang;
+	let language_full = document.documentElement.lang;
 	const language_short = language_full.substring(0, 2);
+
+	if (language_short === 'en') {
+		language_full = 'en-GB';
+	}
 
 	useEffect(() => {
 		setLoading(true);
@@ -40,15 +44,29 @@ const App = ({ element: { dataset }, classNameBase }) => {
 		return 'No current events';
 	}
 
+	console.log(events);
+
 	return (
 		<div className={classNameBase}>
 			<div className={`${classNameBase}__entries`}>
 				{events.map((event) => {
-					const dateString = legibleDate({ date_from: event.date, date_to: event.end_date, language_full, language_short });
+					let dateString = legibleDate({ date_from: event.date, date_to: event.end_date, language_full, language_short });
+
+					if (event.location?.location) {
+						dateString += `, ${event.location.location}`;
+					}
+
 					return (
 						<div className={`${classNameBase}__entry`}>
-							<div className={`${classNameBase}__entry-title`} dangerouslySetInnerHTML={{ __html: event.title }} />
+							<div className={`${classNameBase}__entry-title`}>
+								{event.url && <a target="_blank" href={event.url} dangerouslySetInnerHTML={{ __html: event.title }} />}
+								{!event.url && <span dangerouslySetInnerHTML={{ __html: event.title }} />}
+							</div>
 							<div className={`${classNameBase}__entry-dates`} dangerouslySetInnerHTML={{ __html: dateString }} />
+							<div className={`${classNameBase}__entry-organizer`}>
+								{event.meetup_url && <a target="_blank" href={event.meetup_url} dangerouslySetInnerHTML={{ __html: event.meetup }} />}
+								{!event.meetup_url && <span dangerouslySetInnerHTML={{ __html: event.meetup }} />}
+							</div>
 						</div>
 					);
 				})}

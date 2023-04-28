@@ -16,47 +16,43 @@ export const legibleDate = (props) => {
 		minute: 'numeric',
 	};
 
+	let times = timeArray({ date_from: from, date_to: to, language: language_full });
 	let fromTo = '';
 
 	if (from.getDate() === to.getDate() && from.getMonth() === to.getMonth() && from.getFullYear() === to.getFullYear()) {
 		// If the date is the same day
 		switch (language_short) {
 			case 'en':
-				let times = timeArray({ date_from: from, date_to: to, language: language_full });
-
 				fromTo = `${addOrdinalSuffix(from.getDate())} ${from.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })}, from ${times['from']} until ${times['to']}`;
 				break;
 			default:
-				fromTo = from.toLocaleDateString('fr-FR', options);
+				fromTo = from.toLocaleDateString(language_full, options);
 				break;
 		}
-	} else if (false && from.getMonth() === to.getMonth()) {
+	} else if (from.getMonth() === to.getMonth()) {
 		// If it's the same month
 		switch (language_short) {
 			case 'de':
-				fromTo = `${from.getDate()}. bis ${to.getDate()}. ${from.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })}`;
+				fromTo = `${from.getDate()}. bis ${to.getDate()}. ${from.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })}, von ${times['from']} bis ${times['to']}`;
 				break;
 			case 'fr':
-				fromTo = `${from.getDate()} - ${to.getDate()} ${from.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })}`;
+				fromTo = `${from.getDate()} - ${to.getDate()} ${from.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })}, de ${times['from']} jusqu'a ${times['to']}`;
 				break;
 			default:
-				fromTo = `${addOrdinalSuffix(from.getDate())} - ${addOrdinalSuffix(to.getDate())} ${from.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })}`;
+				fromTo = `${addOrdinalSuffix(from.getDate())} - ${addOrdinalSuffix(to.getDate())} ${from.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })}, from ${times['from']} to ${times['to']}`;
 				break;
 		}
 	} else {
 		// For all other cases
 		switch (language_short) {
-			case 'en':
-				const tstr = timeString(from, to);
-
-				// get hours and minutes portion of from date
-				const fromTime = from.toLocaleTimeString(language_full, { hour: 'numeric', minute: 'numeric' }),
-					toTime = to.toLocaleTimeString(language_full, { hour: 'numeric', minute: 'numeric' });
-
-				fromTo = `${addOrdinalSuffix(from.getDate())} ${from.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })} to ${addOrdinalSuffix(to.getDate())} ${to.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })}`;
+			case 'de':
+				fromTo = `${from.toLocaleDateString(language_full, options)} bis ${to.toLocaleDateString(language_full, options)}`;
+				break;
+			case 'fr':
+				fromTo = `${from.toLocaleDateString(language_full, options)} jusqu'au ${to.toLocaleDateString(language_full, options)}`;
 				break;
 			default:
-				fromTo = `${from.toLocaleDateString(language_full, options)} bis ${to.toLocaleDateString(language_full, options)}`;
+				fromTo = `${addOrdinalSuffix(from.getDate())} ${from.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })} to ${addOrdinalSuffix(to.getDate())} ${to.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })}, from ${times['from']} to ${times['to']}`;
 				break;
 		}
 	}
