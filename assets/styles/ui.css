@@ -1466,7 +1466,8 @@ body {
   background-color: rgba(255, 255, 255, 0.85);
 }
 .wp-block-shb-pageteaser__figure img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100%;
   height: 100%;
 }

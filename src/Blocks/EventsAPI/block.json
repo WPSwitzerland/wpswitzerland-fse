@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "shp/events-api",
+	"title": "Events via API",
+	"description": "Display a list of upcoming events.",
+	"category": "widgets",
+	"icon": "editor-ul",
+	"keywords": ["event", "list"],
+	"textdomain": "shp_nexus_vacancies",
+	"supports": {
+		"align": ["wide", "full"],
+		"anchor": true,
+		"html": false,
+		"multiple": false
+	},
+	"attributes": {
+		"apiUrl": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"editorScript": "file:./assets/dist/scripts/editor.js",
+	"style": "file:./assets/dist/styles/view.css",
+	"render": "file:./render.php"
+}

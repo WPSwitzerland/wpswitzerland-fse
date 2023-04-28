@@ -1,0 +1,21 @@
+@mixin stack {
+	> * {
+		margin-top: 0;
+		margin-bottom: 0;
+
+		+ * {
+			margin-top: var(--stack-size);
+		}
+	}
+}
+
+.wp-block-shp-events-api {
+	&__entries {
+		@include stack;
+		--stack-size: 1em;
+	}
+
+	&__entry-organizer {
+		font-size: 0.8em;
+	}
+}
