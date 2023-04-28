@@ -1,0 +1,13 @@
+.wp-block-shp-events-api__entries {
+  --stack-size: 1em;
+}
+.wp-block-shp-events-api__entries > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.wp-block-shp-events-api__entries > * + * {
+  margin-top: var(--stack-size);
+}
+.wp-block-shp-events-api__entry-organizer {
+  font-size: 0.8em;
+}
