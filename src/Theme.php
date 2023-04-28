@@ -42,9 +42,19 @@ class Theme
 	/**
 	 * The Theme object, filled by the constructor
 	 *
-	 * @var array
+	 * @var object
 	 */
 	private $theme;
+
+	/**
+	 * Theme folder URL
+	 */
+	public $url = '';
+
+	/**
+	 * Theme folder path
+	 */
+	public $path = '';
 
 	public function __construct()
 	{
@@ -91,6 +101,8 @@ class Theme
 
 			self::$instance->name    = self::$instance->theme->name;
 			self::$instance->version = self::$instance->theme->version;
+			self::$instance->url = get_stylesheet_directory_uri();
+			self::$instance->path = get_stylesheet_directory();
 			self::$instance->debug   = true;
 
 			if (!isset($_SERVER['HTTP_HOST']) || (strpos($_SERVER['HTTP_HOST'], '.hello') === false && strpos($_SERVER['HTTP_HOST'], '.local') === false) && !in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
