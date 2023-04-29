@@ -3,9 +3,16 @@ import timeArray from '../_time-array';
 
 export const legibleDate = (props) => {
 	const { date_from, date_to, language_short, language_full } = props;
+	const date_from_bits = date_from.split(' ');
+	const date_from_date = date_from_bits[0].split('-');
+	const date_from_time = date_from_bits[1].split(':');
 
-	const from = new Date(date_from);
-	const to = new Date(date_to);
+	const date_to_bits = date_to.split(' ');
+	const date_to_date = date_to_bits[0].split('-');
+	const date_to_time = date_to_bits[1].split(':');
+
+	const from = new Date(date_from_date[0], date_from_date[1] - 1, date_from_date[2], date_from_time[0], date_from_time[1]);
+	const to = new Date(date_to_date[0], date_to_date[1] - 1, date_to_date[2], date_to_time[0], date_to_time[1]);
 
 	const options = {
 		weekday: 'long',
