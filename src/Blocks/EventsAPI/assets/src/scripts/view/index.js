@@ -6,7 +6,7 @@ const App = ({ element: { dataset }, classNameBase }) => {
 	const [events, setEvents] = useState([]);
 	const [loading, setLoading] = useState(false);
 
-	const { root: api_root, nonce } = wpApiSettings;
+	const { root: api_root } = wpApiSettings;
 	const { url } = dataset;
 
 	let language_full = document.documentElement.lang;
@@ -21,7 +21,7 @@ const App = ({ element: { dataset }, classNameBase }) => {
 		fetch(`${api_root}sht/v1/events`, {
 			method: 'POST',
 			headers: {
-				//'X-WP-Nonce': nonce,
+				// Do not include a nonce, or the validation will always fail.
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
