@@ -21,7 +21,7 @@ const App = ({ element: { dataset }, classNameBase }) => {
 		fetch(`${api_root}sht/v1/events`, {
 			method: 'POST',
 			headers: {
-				'X-WP-Nonce': nonce,
+				//'X-WP-Nonce': nonce,
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
@@ -43,8 +43,6 @@ const App = ({ element: { dataset }, classNameBase }) => {
 	if (!events.length) {
 		return 'No current events';
 	}
-
-	console.log(events);
 
 	return (
 		<div className={classNameBase}>
