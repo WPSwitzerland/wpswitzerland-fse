@@ -18,20 +18,15 @@ const App = ({ element: { dataset }, classNameBase }) => {
 
 	useEffect(() => {
 		setLoading(true);
-		fetch(`${api_root}sht/v1/events`, {
-			method: 'POST',
+		fetch(`${api_root}sht/v1/events?url=${url}`, {
 			headers: {
 				// Do not include a nonce, or the validation will always fail.
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({
-				url: url,
-			}),
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				const { events } = data;
-				setEvents(events);
+				setEvents(data);
 				setLoading(false);
 			});
 	}, []);
@@ -40,7 +35,7 @@ const App = ({ element: { dataset }, classNameBase }) => {
 		return 'Loading...';
 	}
 
-	if (!events.length) {
+	if (!events || !events.length) {
 		return 'No current events';
 	}
 
