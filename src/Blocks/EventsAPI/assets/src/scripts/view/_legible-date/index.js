@@ -30,7 +30,7 @@ export const legibleDate = (props) => {
 		// If the date is the same day
 		switch (language_short) {
 			case 'en':
-				fromTo = `${addOrdinalSuffix(from.getDate())} ${from.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })}, from ${times['from']} until ${times['to']}`;
+				fromTo = `${addOrdinalSuffix(from.getDate())} ${from.toLocaleDateString(language_full, { month: 'long', year: 'numeric' })}, ${times['from']}-${times['to']}`;
 				break;
 			default:
 				fromTo = from.toLocaleDateString(language_full, options);
