@@ -8,11 +8,6 @@ body {
 }
 
 .c-header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 1972;
 	background-color: transparent !important;
 	border: none;
 	@extend %h-guttered;
@@ -58,5 +53,15 @@ body {
 
 	&__menutoggler {
 		margin: var(--unit) auto;
+	}
+}
+
+@include context-view {
+	.c-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1972;
 	}
 }

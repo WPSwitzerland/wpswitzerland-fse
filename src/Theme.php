@@ -73,6 +73,7 @@ class Theme
 				Package\Language::class,
 				Package\Media::class,
 				Package\Navigation::class,
+				Package\RSSCollator::class,
 				Package\Shyify::class,
 
 				PostType\Page::class,
