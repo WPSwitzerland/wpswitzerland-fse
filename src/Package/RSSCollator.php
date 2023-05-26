@@ -230,7 +230,9 @@ class RSSCollator
 
 			foreach ($feedContent['items'] as $feedItem) {
 
-				// $title = "{$feedContent['title']} - {$feedItem['title']}";
+				$source = esc_html($feedContent['title']);
+
+				// $title = "{$source} - {$feedItem['title']}";
 				$title = $feedItem['title'];
 
 				$existingposts = $wpdb->get_results($wpdb->prepare("SELECT * FROM $wpdb->posts WHERE post_title LIKE '%s' AND post_type = '%s'", '%' . $wpdb->esc_like($title) . '%', $this->postType));
@@ -245,7 +247,7 @@ class RSSCollator
 					'post_date' => wp_date('Y-m-d H:i:s', strtotime($feedItem['pubDate'])),
 					'post_type' => $this->postType,
 					'post_status' => 'publish',
-					'post_excerpt' => $feedContent['title'],
+					'post_excerpt' => $source,
 				];
 
 				$post_id = wp_insert_post($postData);
@@ -254,7 +256,6 @@ class RSSCollator
 					$link = sanitize_url($feedItem['link']);
 					update_post_meta($post_id, 'feed_item_url', $link);
 
-					$source = esc_html($feedContent['title']);
 					update_post_meta($post_id, 'feed_item_source', $source);
 				}
 			}
