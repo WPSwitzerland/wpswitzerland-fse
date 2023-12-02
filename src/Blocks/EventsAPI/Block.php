@@ -47,11 +47,13 @@ class Block
 			return [];
 		}
 
-		$url = $url;
 		$transient_key = 'sht_events_api_' . md5($url);
 
-		if (!empty(get_transient($transient_key))) {
-			return get_transient($transient_key);
+		$events = get_transient($transient_key);
+		$debug = defined('WP_DEBUG') && WP_DEBUG;
+
+		if (!empty($events) && !$debug) {
+			return $events;
 		}
 
 		$curl = curl_init($url);
