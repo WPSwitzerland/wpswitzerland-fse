@@ -18,7 +18,7 @@ const App = ({ element: { dataset }, classNameBase }) => {
 
 	useEffect(() => {
 		setLoading(true);
-		fetch(`${api_root}sht/v1/events?url=${url}`, {
+		fetch(`${api_root}sht/v1/events?url=${url}&per_page=100`, {
 			headers: {
 				// Do not include a nonce, or the validation will always fail.
 				'Content-Type': 'application/json',
@@ -39,9 +39,19 @@ const App = ({ element: { dataset }, classNameBase }) => {
 		return 'No current events';
 	}
 
+	let columns = 1;
+
+	if (events.length > 6) {
+		columns = 2;
+	}
+
+	if (events.length > 10) {
+		columns = 3;
+	}
+
 	return (
 		<div className={classNameBase}>
-			<div className={`${classNameBase}__entries`}>
+			<div className={`${classNameBase}__entries ${classNameBase}__entries--cols-${columns}`}>
 				{events.map((event) => {
 					let dateString = legibleDate({ date_from: event.date, date_to: event.end_date, language_full, language_short });
 

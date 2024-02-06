@@ -1,12 +1,22 @@
+.wp-block-shp-events-api {
+  container-name: eventsApi;
+  container-type: inline-size;
+}
 .wp-block-shp-events-api__entries {
-  --stack-size: 1em;
+  display: grid;
+  align-items: flex-start;
+  gap: 1em;
 }
-.wp-block-shp-events-api__entries > * {
-  margin-top: 0;
-  margin-bottom: 0;
+@container eventsApi (min-width: 37rem) {
+  .wp-block-shp-events-api__entries--cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-.wp-block-shp-events-api__entries > * + * {
-  margin-top: var(--stack-size);
+@container eventsApi (min-width: 37rem) {
+  .wp-block-shp-events-api__entries--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
 }
 .wp-block-shp-events-api__entry-organizer {
   font-size: 0.8em;

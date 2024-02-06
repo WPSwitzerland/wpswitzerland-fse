@@ -1,18 +1,36 @@
 @mixin stack {
-	> * {
+	>* {
 		margin-top: 0;
 		margin-bottom: 0;
 
-		+ * {
+		+* {
 			margin-top: var(--stack-size);
 		}
 	}
 }
 
 .wp-block-shp-events-api {
+	container-name: eventsApi;
+	container-type: inline-size;
+
 	&__entries {
-		@include stack;
-		--stack-size: 1em;
+		display: grid;
+		align-items: flex-start;
+		gap: 1em;
+
+		&--cols-2 {
+			@container eventsApi (min-width: 37rem) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		&--cols-3 {
+			@container eventsApi (min-width: 37rem) {
+				grid-template-columns: repeat(3, 1fr);
+				gap: 1.5rem;
+			}
+		}
+
 	}
 
 	&__entry-organizer {
