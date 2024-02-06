@@ -28,8 +28,8 @@ a {
 	text-decoration: underline;
 	text-decoration-thickness: 0.05em;
 	text-decoration-style: dotted;
-	text-decoration-color: rgba(0, 0, 0, 0.35);
-	text-underline-offset: 0.075em;
+	text-decoration-color: currentColor;
+	text-underline-offset: 0.15em;
 
 	&:hover {
 		text-decoration-thickness: auto;
@@ -66,7 +66,7 @@ code {
 	padding: 0.0625em 0.25em;
 }
 
-dd + dt {
+dd+dt {
 	margin-top: var(--unit);
 }
 
@@ -84,16 +84,14 @@ img {
 figure {
 	margin: 0;
 
-	> a {
+	>a {
 		border-bottom: none;
 	}
 }
 
 figcaption {
 	text-align: center;
-	font-size: var(
-		--wp--custom--font-sizes--step--1
-	); // not supported in theme.json
+	font-size: var(--wp--custom--font-sizes--step--1); // not supported in theme.json
 }
 
 hr {
@@ -139,15 +137,14 @@ ul {
 }
 
 p.has-medium-font-size {
-	--wp--preset--font-size--medium: clamp(
-		1.06rem,
-		calc(1.01rem + 0.24vw),
-		1.19rem
-	);
+	--wp--preset--font-size--medium: clamp(1.06rem,
+			calc(1.01rem + 0.24vw),
+			1.19rem);
 	font-weight: 500;
 }
 
 nav {
+
 	li,
 	ul {
 		list-style: none;
@@ -221,12 +218,14 @@ h6 {
 }
 
 @include context-edit {
+
 	h1,
 	h2,
 	h3,
 	h4,
 	h5,
 	h6 {
+
 		a,
 		a:active,
 		a:hover {
