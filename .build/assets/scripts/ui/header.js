@@ -12,6 +12,7 @@ if (header) {
 			document.documentElement.style.setProperty('--header--height', header.offsetHeight - 1 + 'px');
 		};
 
+	stuck();
 	height();
 	window.addEventListener('scroll', stuck);
 	window.addEventListener('resize', height);
