@@ -6,6 +6,11 @@ window.addEventListener('load', () => {
 		name: 'less-gap',
 		label: 'Less gap',
 	});
+
+	registerBlockStyle('core/cover', {
+		name: 'textured',
+		label: 'Textured',
+	});
 });
 
 window.addEventListener('load', () => {
