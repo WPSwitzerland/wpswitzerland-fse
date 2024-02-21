@@ -1,28 +1,38 @@
 @include context-view {
 	.c-mobilemenu {
-		display: none;
+
+		--mobilemenu--top: var(--header--height);
+		--mobilemenu--height: calc(var(--svh) * 100);
+
+		body.admin-bar & {
+			--mobilemenu--top: calc(var(--header--height) + var(--wp-admin--admin-bar--height));
+			--mobilemenu--height: calc(var(--svh) * 100 + calc(var(--header--height) + var(--wp-admin--admin-bar--height)));
+		}
+
+
+		//display: none;
 		box-sizing: border-box;
 		position: fixed;
-		top: var(--header--height);
-		bottom: 0;
+		top: var(--mobilemenu--top);
 		left: 0;
 		// Don't use "right" here: it creates a scroll overflow
 		width: 100%;
-		transform: translateX(100vw);
+		// transform: translateX(100vw);
 		opacity: 0;
-		z-index: 2;
-		transition: opacity 300ms ease;
-		height: calc(var(--vh) * 100);
+		z-index: 1972;
+		transition: opacity .6s ease;
+		height: calc(var(--svh) * 100);
 		overflow: auto;
 
-		@include breakpoint(wide) {
-			display: none;
-		}
 
 		&[aria-hidden='false'] {
 			display: block;
 			transform: translateX(0);
 			opacity: 1;
+
+			@media screen and (min-width: rem-calc(1280px)) {
+				display: none;
+			}
 		}
 	}
 }

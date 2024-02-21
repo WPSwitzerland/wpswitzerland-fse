@@ -1,7 +1,7 @@
-body {
-	--vh: 1vh;
+html {
+	--svh: 1vh;
 
 	@supports(--vh: 1svh) {
-		--vh: 1svh;
+		--svh: 1svh;
 	}
 }
