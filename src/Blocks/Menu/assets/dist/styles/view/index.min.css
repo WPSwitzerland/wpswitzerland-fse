@@ -1,1 +1,1 @@
-.wp-block-sht-menu a{color:currentColor;text-decoration:none;font-weight:inherit;padding:0}.wp-block-sht-menu .c-menu__entries--primary{display:flex;gap:2rem}
+.wp-block-sht-menu a{color:currentColor;text-decoration:none;font-weight:inherit;padding:0}.wp-block-sht-menu .c-menu__entries--primary{display:flex;gap:2rem}.wp-block-sht-menu .c-menu__entries--primary .c-menu__entry--current>a{text-decoration:underline;-webkit-text-decoration-color:rgba(255,255,255,.65);text-decoration-color:rgba(255,255,255,.65);text-decoration-thickness:1px;text-underline-offset:2px}

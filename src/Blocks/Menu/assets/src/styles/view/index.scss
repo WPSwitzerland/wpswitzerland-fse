@@ -11,6 +11,15 @@
 			&--primary {
 				display: flex;
 				gap: 2rem;
+
+				.c-menu__entry--current {
+					&>a {
+						text-decoration: underline;
+						text-decoration-color: rgba(255, 255, 255, .65);
+						text-decoration-thickness: 1px;
+						text-underline-offset: 2px;
+					}
+				}
 			}
 		}
 	}
