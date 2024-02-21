@@ -1,7 +1,24 @@
 <!-- wp:template-part {"slug":"header","theme":"wpswitzerland-fse"} /-->
 
-<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"}}},"className":"c-main"} -->
-<main class="wp-block-group c-main" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0"><!-- wp:post-content {"layout":{"inherit":true}} /--></main>
-<!-- /wp:group -->
+<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|70","margin":{"top":"0","bottom":"0"}}},"layout":{"type":"default"}} -->
+<div class="wp-block-group" style="margin-top: 0; margin-bottom: 0">
+	<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"},"blockGap":"var:preset|spacing|70"}},"className":"c-main"} -->
+	<main class="wp-block-group c-main" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0">
+		<!-- wp:cover {"useFeaturedImage":true,"dimRatio":90,"focalPoint":{"x":"0.38","y":"0.40"},"minHeight":20,"minHeightUnit":"rem","gradient":"wordpress-blue","contentPosition":"bottom left","lock":{"move":false,"remove":false},"align":"full","className":"is-style-textured","layout":{"type":"constrained"}} -->
+		<div class="wp-block-cover alignfull has-custom-content-position is-position-bottom-left is-style-textured" style="min-height: 20rem">
+			<span aria-hidden="true" class="wp-block-cover__background has-background-dim-90 has-background-dim has-background-gradient has-wordpress-blue-gradient-background"></span>
+			<div class="wp-block-cover__inner-container">
+				<!-- wp:group {"align":"wide","layout":{"inherit":true,"type":"constrained"}} -->
+				<div class="wp-block-group alignwide"><!-- wp:post-title {"level":1,"align":"wide","textColor":"white","fontSize":"xxx-large"} /--></div>
+				<!-- /wp:group -->
+			</div>
+		</div>
+		<!-- /wp:cover -->
 
-<!-- wp:template-part {"slug":"footer","theme":"wpswitzerland-fse"} /-->
+		<!-- wp:post-content {"layout":{"inherit":true}} /-->
+	</main>
+	<!-- /wp:group -->
+
+	<!-- wp:template-part {"slug":"footer","theme":"wpswitzerland-fse"} /-->
+</div>
+<!-- /wp:group -->
