@@ -2,10 +2,10 @@
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
-	min-height: calc(100 * var(--vh));
+	min-height: calc(100 * var(--svh));
 
 	.admin-bar & {
-		min-height: calc(100 * var(--vh) - var(--wp-admin--admin-bar--height));
+		min-height: calc(100 * var(--svh) - var(--wp-admin--admin-bar--height));
 	}
 
 	.site-header .wp-block-site-logo {
