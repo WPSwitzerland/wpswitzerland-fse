@@ -23,6 +23,6 @@ $context: 'edit';
 @import '__blocks/__all.blocks';
 @import '_overrides/__all.overrides';
 
-.is-root-container> :where(:not(.alignwide):not(.alignfull)) {
+.wp-block-post-content> :where(:not(.alignwide):not(.alignfull)) {
 	@extend %narrow-offset;
 }

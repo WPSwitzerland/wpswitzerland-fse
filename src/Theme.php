@@ -67,6 +67,7 @@ class Theme
 			[
 				// Block\Menu::class,
 				Blocks\EventsAPI\Block::class,
+				Blocks\Menu\Block::class,
 
 				Package\Assets::class,
 				Package\Gutenberg::class,

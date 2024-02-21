@@ -1,4 +1,5 @@
 body {
+	--radius: 0;
 	--checkbox-size: calc(var(--unit) * 1.5);
 	--checkbox-size-small: var(--unit); // used in other SCSS files, not here
 	--field-border: 1px solid var(--wp--preset--color--light-gray);
@@ -80,7 +81,7 @@ input {
 	overflow: hidden;
 	pointer-events: none;
 
-	~ label {
+	~label {
 		display: flex !important;
 		align-items: center;
 
@@ -92,8 +93,7 @@ input {
 			height: var(--checkbox-size);
 			flex: 0 0 var(--checkbox-size);
 			margin-right: 0.5em;
-			background: url('../img/icons/checkbox-active.min.svg') center
-				no-repeat;
+			background: url('../img/icons/checkbox-active.min.svg') center no-repeat;
 			background-color: var(--checkbox-background-color);
 			background-size: 0;
 			border: var(--field-border);
@@ -107,18 +107,18 @@ input {
 		}
 	}
 
-	&:checked ~ label:before {
+	&:checked~label:before {
 		background-color: var(--checkbox-checked-background-color);
 		border-color: var(--checkbox-checked-border-color);
 		background-size: contain;
 	}
 }
 
-[type='checkbox'] ~ label:before {
+[type='checkbox']~label:before {
 	border-radius: var(--checkbox-radius);
 }
 
-[type='radio'] ~ label:before {
+[type='radio']~label:before {
 	border-radius: 50%;
 }
 

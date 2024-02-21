@@ -2,12 +2,16 @@
 
 namespace SayHello\Theme\Controller;
 
+use DOMDocument;
 use WP_Block;
 
 /**
- * Handles generic block stuff
+ * Handles generic block stuff.
+ * Don't load this through the main Plugin controller,
+ * add it in the Block class. This way, it will only
+ * get instantiated when needed.
  *
- * @author Say Hello GmbH <hello@sayhello.ch>
+ * @author Mark Howells-Mead <mark@sayhello.ch>
  */
 
 class Block
@@ -31,6 +35,10 @@ class Block
 			$class_names[] = "has-{$attributes['textColor']}-color";
 		}
 
+		if (!empty($attributes['fontSize'] ?? '')) {
+			$class_names[] = "has-{$attributes['fontSize']}-font-size";
+		}
+
 		return $class_names;
 	}
 
@@ -39,11 +47,11 @@ class Block
 
 		// ACF block
 		if (isset($block['acf_block_version'])) {
-			return implode(' ', array_merge([$block['shp']['classNameBase']], $this->basicClasses($block)));
+			return implode(' ', array_merge([$block['shp']['pluginKey']], $this->basicClasses($block)));
 		}
 
 		// Core block
-		return implode(' ', array_merge([$block['shp']['classNameBase']], $this->basicClasses($block['attributes'])));
+		return implode(' ', array_merge([$block['shp']['pluginKey']], $this->basicClasses($block['attributes'] ?? [])));
 	}
 
 	/**
@@ -65,7 +73,19 @@ class Block
 			$block['shp'] = [];
 		}
 
-		$block['shp']['classNameBase'] = wp_get_block_default_classname($block['name']);
+		$block['shp']['classNameDefault'] = wp_get_block_default_classname($block['name'] ?? $block['blockName'] ?? '');
+		$block['shp']['pluginKey'] = $block['shp']['classNameDefault'];
 		$block['shp']['class_names'] = $this->classNames($block);
+	}
+
+
+	public function appendHTML(&$parentNode, $html_string)
+	{
+		$tmpDoc = new DOMDocument();
+		$tmpDoc->loadHTML($html_string);
+		foreach ($tmpDoc->getElementsByTagName('body')->item(0)->childNodes as $node) {
+			$node = $parentNode->ownerDocument->importNode($node, true);
+			$parentNode->appendChild($node);
+		}
 	}
 }
