@@ -301,7 +301,7 @@
 			}
 		},
 		"spacing": {
-			"blockGap": "1rem"
+			"blockGap": "1.5rem"
 		},
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--primary)",
