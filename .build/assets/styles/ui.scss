@@ -27,4 +27,6 @@ body .entry-content> :where(:not(.alignwide):not(.alignfull)) {
 	@extend %narrow-offset;
 }
 
+html :where(.is-position-sticky) {
+	--wp-admin--admin-bar--position-offset: calc(var(--header--height) + var(--unit--medium));
 }
