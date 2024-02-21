@@ -137,9 +137,6 @@ ul {
 }
 
 p.has-medium-font-size {
-	--wp--preset--font-size--medium: clamp(1.06rem,
-			calc(1.01rem + 0.24vw),
-			1.19rem);
 	font-weight: 500;
 }
 
