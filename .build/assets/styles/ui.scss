@@ -23,10 +23,8 @@ $context: 'view';
 @import '__blocks/__all.blocks';
 @import '_overrides/__all.overrides';
 
-.wp-block-cover__inner-container > :where(:not(.alignwide):not(.alignfull)),
-.wp-block-post-content > :where(:not(.alignwide):not(.alignfull)),
-.wp-block-group
-	> :where(:not(.alignwide):not(.alignfull):not(.wp-block-post-content)) {
-	margin-left: 0 !important;
-	max-width: var(--constraint-narrow);
+body .entry-content> :where(:not(.alignwide):not(.alignfull)) {
+	@extend %narrow-offset;
+}
+
 }
