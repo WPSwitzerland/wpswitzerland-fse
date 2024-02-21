@@ -10,7 +10,6 @@ body {
 .c-header {
 	background-color: transparent !important;
 	border: none;
-	@extend %h-guttered;
 
 	&::before {
 		content: '';
@@ -34,14 +33,23 @@ body {
 	}
 
 	&.with--background {
-		backdrop-filter: blur(10px);
 
-		&::before {
-			opacity: 0.025;
+		@media screen and (min-width:rem-calc(601px)) {
+			backdrop-filter: blur(10px);
+
+			&::before {
+				opacity: 0.025;
+			}
+
+			&::after {
+				opacity: 0.8;
+			}
 		}
+	}
 
-		&::after {
-			opacity: 0.8;
+	&__inner {
+		@media screen and (min-width: rem-calc(601px)) {
+			background-color: transparent !important;
 		}
 	}
 
@@ -58,10 +66,12 @@ body {
 
 @include context-view {
 	.c-header {
-		position: fixed;
-		top: var(--wp-admin--admin-bar--height, 0);
-		left: 0;
-		right: 0;
-		z-index: 1972;
+		@media screen and (min-width: rem-calc(601px)) {
+			position: fixed;
+			top: var(--wp-admin--admin-bar--height, 0);
+			left: 0;
+			right: 0;
+			z-index: 1972;
+		}
 	}
 }

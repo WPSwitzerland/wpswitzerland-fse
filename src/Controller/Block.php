@@ -78,7 +78,6 @@ class Block
 		$block['shp']['class_names'] = $this->classNames($block);
 	}
 
-
 	public function appendHTML(&$parentNode, $html_string)
 	{
 		$tmpDoc = new DOMDocument();
