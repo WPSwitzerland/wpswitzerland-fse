@@ -7,4 +7,8 @@
 			@extend %h-guttered;
 		}
 	}
+
+	.entry-content:has(.wp-block-group.alignfull:last-child) {
+		margin-bottom: calc(-1 * var(--wp--preset--spacing--70));
+	}
 }

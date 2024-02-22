@@ -31,3 +31,7 @@
 .c-mobilemenu .wp-block-sht-menu .c-menu__entries--primary .c-menu__entry--current > a {
   opacity: 1;
 }
+.wp-block-sht-menu .c-menu__entries--footer {
+  display: flex;
+  gap: 1rem;
+}
