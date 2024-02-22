@@ -8,3 +8,13 @@
 @import 'mixins/object-fit';
 @import 'mixins/transition';
 @import 'mixins/typography';
+
+%narrow-offset {
+	margin-left: 0 !important;
+	max-width: var(--constraint-narrow);
+
+	@media screen and (min-width: rem-calc(1312px)) {
+		margin-left: auto !important;
+		transform: translateX(calc((var(--constraint-wide) - var(--constraint-narrow)) / -2));
+	}
+}

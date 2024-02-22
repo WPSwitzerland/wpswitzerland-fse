@@ -1,8 +1,8 @@
 .wp-block-post-content {
-	@extend .h-stack;
+
 	@extend %h-guttered;
 
-	.alignfull + .alignfull {
+	.alignfull+.alignfull {
 		margin-top: 0;
 	}
 
@@ -10,17 +10,7 @@
 		content: '–\00a0\00a0';
 	}
 
-	& > * + h1,
-	& > * + h2,
-	& > * + h3,
-	& > * + h4,
-	& > * + h5,
-	& > * + h6,
-	& > .wp-block-quote {
-		--wp--style--block-gap: 4.5vw;
-	}
-
-	& > .wp-block-cover:first-child {
+	&>.wp-block-cover:first-child {
 		padding-top: 144px;
 	}
 }
