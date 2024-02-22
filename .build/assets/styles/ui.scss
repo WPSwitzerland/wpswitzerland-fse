@@ -23,10 +23,16 @@ $context: 'view';
 @import '__blocks/__all.blocks';
 @import '_overrides/__all.overrides';
 
-.wp-block-cover__inner-container > :where(:not(.alignwide):not(.alignfull)),
-.wp-block-post-content > :where(:not(.alignwide):not(.alignfull)),
-.wp-block-group
-	> :where(:not(.alignwide):not(.alignfull):not(.wp-block-post-content)) {
-	margin-left: 0 !important;
-	max-width: var(--constraint-narrow);
+body .entry-content> :where(:not(.alignwide):not(.alignfull)),
+body .wp-block-cover__inner-container.is-layout-constrained> :where(:not(.alignwide):not(.alignfull)) {
+	@extend %narrow-offset;
+}
+
+html :where(.is-position-sticky) {
+	--wp-admin--admin-bar--position-offset: calc(var(--header--height) + var(--unit--medium));
+	z-index: 1 !important;
+}
+
+html body.admin-bar :where(.is-position-sticky) {
+	--wp-admin--admin-bar--position-offset: calc(var(--header--height) + var(--unit--medium) + var(--wp-admin--admin-bar--height));
 }
