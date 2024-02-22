@@ -1,6 +1,8 @@
 .wp-block-site-logo {
 	margin: 0 !important;
 
+	max-width: 3rem;
+
 	@include breakpoint(desktop) {
 		.wp-block-site-logo {
 			width: 84px;

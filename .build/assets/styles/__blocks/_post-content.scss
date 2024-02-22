@@ -11,6 +11,8 @@
 	}
 
 	&>.wp-block-cover:first-child {
-		padding-top: 144px;
+		@media screen and (min-width: #{rem-calc(601px)}) {
+			padding-top: 144px;
+		}
 	}
 }
