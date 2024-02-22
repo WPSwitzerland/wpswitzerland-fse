@@ -1,12 +1,3 @@
-:root,
-body {
-	--header--height: #{rem-calc(85px)};
-
-	@include breakpoint(wide) {
-		--header--height: #{rem-calc(104px)};
-	}
-}
-
 .c-header {
 	background-color: transparent !important;
 	border: none;
@@ -66,12 +57,14 @@ body {
 
 @include context-view {
 	.c-header {
+		position: relative;
+		z-index: 1972;
+
 		@media screen and (min-width: rem-calc(601px)) {
 			position: fixed;
 			top: var(--wp-admin--admin-bar--height, 0);
 			left: 0;
 			right: 0;
-			z-index: 1972;
 		}
 	}
 }

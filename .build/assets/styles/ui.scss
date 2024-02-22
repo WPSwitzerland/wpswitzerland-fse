@@ -28,8 +28,9 @@ body .wp-block-cover__inner-container.is-layout-constrained> :where(:not(.alignw
 	@extend %narrow-offset;
 }
 
-.wp html :where(.is-position-sticky) {
+html :where(.is-position-sticky) {
 	--wp-admin--admin-bar--position-offset: calc(var(--header--height) + var(--unit--medium));
+	z-index: 1 !important;
 }
 
 html body.admin-bar :where(.is-position-sticky) {
