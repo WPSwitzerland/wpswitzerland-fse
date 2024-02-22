@@ -8,7 +8,7 @@
 			<div class="wp-block-group site-brand" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0">
 				<!-- wp:site-logo {"width":84,"shouldSyncIcon":false} /-->
 
-				<!-- wp:group {"style":{"spacing":{"blockGap":"0px"}}} -->
+				<!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"blockVisibility":{"controlSets":[{"id":1,"enable":true,"controls":{"screenSize":{"hideOnScreenSize":{"small":true}}}}]}} -->
 				<div class="wp-block-group">
 					<!-- wp:site-title {"fontSize":"small"} /-->
 
@@ -20,20 +20,20 @@
 		</div>
 		<!-- /wp:column -->
 
-		<!-- wp:column {"verticalAlignment":"center","hiddenForMobile":true,"hiddenForTablet":true} -->
-		<div class="wp-block-column is-vertically-aligned-center is-hidden-for--mobile is-hidden-for--tablet">
+		<!-- wp:column {"verticalAlignment":"center","className":"is-hidden-for\u002d\u002dmobile","blockVisibility":{"controlSets":[{"id":1,"enable":true,"controls":{"screenSize":{"hideOnScreenSize":{"medium":true,"small":true}}}}]}} -->
+		<div class="wp-block-column is-vertically-aligned-center is-hidden-for--mobile">
 			<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"},"fontSize":"small","blockVisibility":{"controlSets":[{"id":1,"enable":true,"controls":{"screenSize":{"hideOnScreenSize":{"large":false,"medium":false}}}}]}} -->
-			<div class="wp-block-group has-small-font-size"><!-- wp:sht/menu {"blockId":"e27c9f34-5506-418c-ba3f-5f07c48cf34f"} /--></div>
+			<div class="wp-block-group has-small-font-size">
+				<!-- wp:sht/menu {"blockId":"1a89eb23-1b09-4a67-9f4e-7125545bf16d"} /-->
+
+				<!-- wp:polylang/language-switcher {"dropdown":true,"hide_if_no_translation":true} /-->
+			</div>
 			<!-- /wp:group -->
 		</div>
 		<!-- /wp:column -->
 
-		<!-- wp:column {"verticalAlignment":"center","width":"2.75rem","hiddenForDesktop":true} -->
-		<div class="wp-block-column is-vertically-aligned-center is-hidden-for--desktop" style="flex-basis: 2.75rem">
-			<!-- wp:sht/menu-toggle -->
-			<button aria-expanded="false" data-root-style="is--mobilemenu--open" aria-controls="mobilemenu" id="mobilemenu" class="wp-block-sht-menu-toggle"><span class="wp-block-sht-menu-toggle__line wp-block-sht-menu-toggle__line--1"></span><span class="wp-block-sht-menu-toggle__line wp-block-sht-menu-toggle__line--2"></span><span class="wp-block-sht-menu-toggle__line wp-block-sht-menu-toggle__line--3"></span></button>
-			<!-- /wp:sht/menu-toggle -->
-		</div>
+		<!-- wp:column {"verticalAlignment":"center","width":"2.75rem","className":"is-hidden-for\u002d\u002ddesktop","blockVisibility":{"controlSets":[{"id":1,"enable":true,"controls":{"screenSize":{"hideOnScreenSize":{"medium":false,"large":true}}}}]}} -->
+		<div class="wp-block-column is-vertically-aligned-center is-hidden-for--desktop" style="flex-basis: 2.75rem"><!-- wp:sht/menu-toggle {"target":"mobilemenu"} /--></div>
 		<!-- /wp:column -->
 	</div>
 	<!-- /wp:columns -->
