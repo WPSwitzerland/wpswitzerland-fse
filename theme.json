@@ -80,14 +80,14 @@
 				}
 			},
 			"fontSizes": {
-				"step-l": "clamp(1.27rem, calc(1.19rem + 0.38vw), 1.8rem)",
-				"step-m": "clamp(1.13rem, calc(1.07rem + 0.27vw), 1.5rem)",
-				"step-r": "clamp(1rem, calc(0.96rem + 0.18vw), 1.0625rem)",
-				"step-s": "clamp(0.89rem, calc(0.87rem + 0.11vw), 1rem)",
-				"step-xl": "clamp(1.42rem, calc(1.32rem + 0.53vw), 2.16rem)",
-				"step-xs": "clamp(0.79rem, calc(0.78rem + 0.06vw), 0.87rem)",
-				"step-xxl": "clamp(1.6rem, calc(1.46rem + 0.71vw), 2.59rem)",
-				"step-xxxl": "clamp(1.8rem, calc(1.61rem + 0.93vw), 3.11rem)",
+				"step-xs": "clamp(0.7901rem, 0.7549rem + 0.1764vi, 1.037rem)",
+				"step-s": "clamp(0.8889rem, 0.8492rem + 0.1984vi, 1.1667rem)",
+				"step-r": "clamp(1rem, 0.9554rem + 0.2232vi, 1.3125rem)",
+				"step-m": "clamp(1.125rem, 1.0748rem + 0.2511vi, 1.4766rem)",
+				"step-l": "clamp(1.2656rem, 1.2091rem + 0.2825vi, 1.6611rem)",
+				"step-xl": "clamp(1.4238rem, 1.3603rem + 0.3178vi, 1.8688rem)",
+				"step-xxl": "clamp(1.6018rem, 1.5303rem + 0.3575vi, 2.1024rem)",
+				"step-xxxl": "clamp(1.802rem, 1.7216rem + 0.4022vi, 2.3652rem)",
 				"step-xxxxl": "clamp(2.03rem, calc(1.78rem + 1.22vw), 3.73rem)"
 			},
 			"lineHeight": {
