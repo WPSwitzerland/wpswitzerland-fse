@@ -2,6 +2,8 @@
 
 namespace SayHello\Theme\Block;
 
+use SayHello\Theme\Package\Gutenberg as GutenbergController;
+
 use WP_REST_Response;
 
 /**
@@ -32,10 +34,11 @@ class Menu
 
 	public function renderBlock($attributes)
 	{
+		$controller = new GutenbergController();
 		ob_start();
 
 		if (empty($theme_location = $attributes['menu'] ?? '')) {
-			if (sht_theme()->Package->Gutenberg->isContextEdit()) {
+			if ($controller->isContextEdit()) {
 ?>
 				<div class="c-editormessage c-editormessage--error"><?php _ex('Bitte wÃ¤hlen Sie eine vordefinierte Navigation aus.', 'Menu block editor message', 'sha'); ?></div>
 			<?php
