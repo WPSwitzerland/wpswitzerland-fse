@@ -9,11 +9,13 @@ namespace SayHello\Theme\Package;
  */
 class Gutenberg
 {
-	public $min = false;
+	private $min = true;
 
 	public function __construct()
 	{
-		$this->min = !sht_theme()->debug;
+		if (defined('WP_DEBUG') && WP_DEBUG) {
+			$this->min = false;
+		}
 	}
 
 	public function run()
@@ -35,16 +37,15 @@ class Gutenberg
 
 	public function enqueueBlockAssets()
 	{
-		if (file_exists(get_template_directory() . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js')) {
-			$script_asset_path = get_template_directory() . '/assets/gutenberg/blocks.asset.php';
-			$script_asset = file_exists($script_asset_path) ? require($script_asset_path) : ['dependencies' => [], 'version' => sht_theme()->version];
-			wp_enqueue_script(
-				'sht-gutenberg-script',
-				get_template_directory_uri() . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js',
-				$script_asset['dependencies'],
-				$script_asset['version']
-			);
-		}
+		$script_asset_path = get_theme_file_path('/assets/gutenberg/blocks.asset.php');
+		$script_asset = require($script_asset_path);
+
+		wp_enqueue_script(
+			'sht-gutenberg-script',
+			get_theme_file_path('/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js'),
+			$script_asset['dependencies'],
+			$script_asset['version']
+		);
 	}
 
 	/**
