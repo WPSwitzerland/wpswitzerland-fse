@@ -13,8 +13,10 @@
 	margin-left: 0 !important;
 	max-width: var(--constraint-narrow);
 
-	@media screen and (min-width: rem-calc(1312px)) {
-		margin-left: auto !important;
-		transform: translateX(calc((var(--constraint-wide) - var(--constraint-narrow)) / -2));
+	@include context-view {
+		@media screen and (min-width: rem-calc(1312px)) {
+			margin-left: auto !important;
+			transform: translateX(calc((var(--constraint-wide) - var(--constraint-narrow)) / -2));
+		}
 	}
 }
