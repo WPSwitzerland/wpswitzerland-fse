@@ -24,7 +24,6 @@ class Assets
 		add_action('wp_enqueue_scripts', [$this, 'registerAssets']);
 		add_action('admin_enqueue_scripts', [$this, 'registerAdminAssets']);
 		add_action('after_setup_theme', [$this, 'editorStyle']);
-		add_action('wp_head', [$this, 'loadFonts']);
 	}
 
 	public function registerAssets()
@@ -66,34 +65,5 @@ class Assets
 	{
 		add_theme_support('editor-styles');
 		add_editor_style('assets/styles/admin-editor' . ($this->debug ? '' : '.min') . '.css');
-	}
-
-	public function loadFonts()
-	{
-		$theme_url = str_replace(get_home_url(), '', get_template_directory_uri());
-		$theme_path = get_template_directory();
-		$font_name = sanitize_title(sht_theme()->name) . '-font-' . sht_theme()->version;
-
-		if (!file_exists("{$theme_path}/assets/fonts/woff2.css")) {
-			return;
-		}
-
-		if (!file_exists("{$theme_path}/assets/fonts/woff.css")) {
-			trigger_error(sprintf(_x('Font CSS file %s missing', 'PHP warning', 'sha'), '/assets/fonts/woff.css'), E_USER_WARNING);
-		}
-
-		$file = get_template_directory() . '/assets/scripts/loadfonts.min.js';
-		if (!file_exists($file)) {
-			echo 'loadfonts.min.js not found!';
-			die;
-		}
-
-		echo '<script id="loadFonts">';
-		echo file_get_contents($file);
-		echo "loadFont('$font_name', '$theme_url/assets/fonts/woff.css', '$theme_url/assets/fonts/woff2.css');";
-		echo '</script>';
-		echo '<noscript>';
-		echo "<link rel='stylesheet' id='font' href='$theme_url/assets/fonts/woff2.css' type='text/css' media='all'>";
-		echo '</noscript>';
 	}
 }
