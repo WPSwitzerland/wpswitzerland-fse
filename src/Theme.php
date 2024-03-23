@@ -46,16 +46,6 @@ class Theme
 	 */
 	private $theme;
 
-	/**
-	 * Theme folder URL
-	 */
-	public $url = '';
-
-	/**
-	 * Theme folder path
-	 */
-	public $path = '';
-
 	public function __construct()
 	{
 		$this->theme = wp_get_theme();
@@ -77,9 +67,6 @@ class Theme
 				Package\Navigation::class,
 				Package\RSSCollator::class,
 				Package\Shyify::class,
-
-				PostType\Page::class,
-
 			]
 		);
 
@@ -104,8 +91,6 @@ class Theme
 
 			self::$instance->name    = self::$instance->theme->name;
 			self::$instance->version = self::$instance->theme->version;
-			self::$instance->url = get_stylesheet_directory_uri();
-			self::$instance->path = get_stylesheet_directory();
 			self::$instance->debug   = true;
 
 			if (!isset($_SERVER['HTTP_HOST']) || (strpos($_SERVER['HTTP_HOST'], '.hello') === false && strpos($_SERVER['HTTP_HOST'], '.local') === false) && !in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
@@ -124,22 +109,11 @@ class Theme
 	private function loadClasses($classes)
 	{
 		foreach ($classes as $class) {
-			$class_parts = explode('\\', $class);
-			$class_short = end($class_parts);
-			$class_set   = $class_parts[count($class_parts) - 2];
 
-			if (!isset(sht_theme()->{$class_set}) || !is_object(sht_theme()->{$class_set})) {
-				sht_theme()->{$class_set} = new \stdClass();
-			}
+			$instance = new $class();
 
-			if (property_exists(sht_theme()->{$class_set}, $class_short)) {
-				wp_die(sprintf(_x('Ein Problem ist geschehen im Theme. Nur eine PHP-Klasse namens «%1$s» darf dem Theme-Objekt «%2$s» zugewiesen werden.', 'Duplicate PHP class assignmment in Theme', 'sht'), $class_short, $class_set), 500);
-			}
-
-			sht_theme()->{$class_set}->{$class_short} = new $class();
-
-			if (method_exists(sht_theme()->{$class_set}->{$class_short}, 'run')) {
-				sht_theme()->{$class_set}->{$class_short}->run();
+			if (method_exists($instance, 'run')) {
+				$instance->run();
 			}
 		}
 	}

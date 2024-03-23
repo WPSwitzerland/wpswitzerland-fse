@@ -6,7 +6,7 @@ $block_controller = new BlockController();
 $block_controller->extend($block);
 
 $script = '/src/Blocks/EventsAPI/assets/dist/scripts/view.js';
-wp_enqueue_script($block['shp']['classNameDefault'], sht_theme()->url . $script, ['wp-element', 'wp-i18n', 'wp-api'], filemtime(sht_theme()->path . $script), true);
+wp_enqueue_script($block['shp']['classNameDefault'], get_theme_file_uri($script), ['wp-element', 'wp-i18n', 'wp-api'], filemtime(get_theme_file_path($script)), true);
 
 // add rest api data including nonce to script
 wp_localize_script($block['shp']['classNameDefault'], 'sht_theme', [
