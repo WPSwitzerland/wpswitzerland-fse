@@ -77,9 +77,6 @@ class Theme
 				Package\Navigation::class,
 				Package\RSSCollator::class,
 				Package\Shyify::class,
-
-				// PostType\Page::class,
-
 			]
 		);
 
