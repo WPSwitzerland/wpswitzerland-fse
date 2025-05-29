@@ -60,6 +60,8 @@ class Theme
 				Blocks\Menu\Block::class,
 				Blocks\MenuToggle\Block::class,
 
+				Controller\BlockBindings::class,
+
 				Package\Assets::class,
 				Package\Gutenberg::class,
 				Package\Language::class,
