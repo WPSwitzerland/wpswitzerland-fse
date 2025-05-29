@@ -1,14 +1,11 @@
 import gulp from 'gulp';
 
 import gulpWebpack from 'webpack-stream';
-import rename from 'gulp-rename';
-import uglify from 'gulp-uglify';
 import fs from 'fs';
 
-const getDirectories = (path) =>
-	fs
-		.readdirSync(path)
-		.filter((file) => fs.statSync(path + '/' + file).isDirectory());
+import DependencyExtractionWebpackPlugin from '@wordpress/dependency-extraction-webpack-plugin';
+
+const getDirectories = (path) => fs.readdirSync(path).filter((file) => fs.statSync(path + '/' + file).isDirectory());
 
 export const task = (config) => {
 	return new Promise((resolve) => {
@@ -35,65 +32,18 @@ export const task = (config) => {
 								loader: 'babel-loader',
 							},
 							{
-								test: /\.css$/i,
-								exclude: /node_modules/,
-								use: [
-									{
-										loader: 'style-loader',
-										options: {
-											sourceMap: false,
-										},
-									},
-									{
-										loader: 'css-loader',
-										options: {
-											sourceMap: false,
-										},
-									},
-								],
-							},
-							{
-								test: /\.scss$/i,
-								exclude: /node_modules/,
-								use: [
-									{
-										loader: 'style-loader',
-										options: {
-											sourceMap: false,
-										},
-									},
-									{
-										loader: 'css-loader',
-										options: {
-											sourceMap: false,
-										},
-									},
-									{
-										loader: 'sass-loader',
-										options: {
-											sourceMap: false,
-										},
-									},
-								],
+								test: /\.s?css$/i,
+								use: ['style-loader', 'css-loader', 'sass-loader'],
 							},
 						],
 					},
 					output: {
 						filename: '[name].js',
 					},
+					plugins: [new DependencyExtractionWebpackPlugin()],
 					externals: {
 						jquery: 'jQuery',
 					},
-				})
-			)
-			.on('error', config.errorLog)
-			.pipe(gulp.dest(config.assetsDir + 'scripts/'))
-
-			// Minify
-			.pipe(uglify())
-			.pipe(
-				rename({
-					suffix: '.min',
 				})
 			)
 			.on('error', config.errorLog)

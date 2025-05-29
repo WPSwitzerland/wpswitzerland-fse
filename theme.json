@@ -33,6 +33,11 @@
 					"slug": "primary"
 				},
 				{
+					"color": "#004566",
+					"name": "Primary dark",
+					"slug": "primary-dark"
+				},
+				{
 					"color": "#00334D",
 					"name": "Secondary",
 					"slug": "secondary"
@@ -61,6 +66,11 @@
 					"color": "#cc8866",
 					"name": "Murten 2023",
 					"slug": "custom-murten-2023"
+				},
+				{
+					"color": "#f55050",
+					"name": "WCEU 2025",
+					"slug": "custom-wceu-2025"
 				}
 			],
 			"text": true

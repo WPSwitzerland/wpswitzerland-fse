@@ -1,30 +1,35 @@
 import { src, dest } from 'gulp';
-
 import cleanCSS from 'gulp-clean-css';
 import filter from 'gulp-filter';
-import sassImportJson from 'gulp-sass-import-json';
 import autoprefixer from 'gulp-autoprefixer';
+import header from 'gulp-header';
 import rename from 'gulp-rename';
-import sourcemaps from 'gulp-sourcemaps';
-const sass = require('gulp-sass')(require('sass'));
+import sassImportJson from '@sayhellogmbh/gulp-sass-import-json';
+import editorStyles from 'gulp-editor-styles';
+import sass from 'gulp-sass';
+import * as dartSass from 'sass';
+
+const gulpSass = sass(dartSass);
 
 export const task = (config) => {
+	const blockFilter = filter(`${config.assetsBuild}styles/admin-editor.css`, { restore: true });
+
 	return (
-		src(config.assetsBuild + 'styles/**/*.scss')
+		src(`${config.assetsBuild}styles/**/*.scss`)
 			.pipe(sassImportJson({ cache: false, isScss: true }))
-			.pipe(sourcemaps.init())
+			.pipe(header('$themeImageFolder: ' + config.themeImageFolder + ';\n'))
 			.pipe(
-				sass({
+				gulpSass({
 					includePaths: ['./node_modules/'],
-				}).on('error', sass.logError)
+				}).on('error', gulpSass.logError)
 			)
-			.pipe(sourcemaps.write({ includeContent: false }))
-			.pipe(sourcemaps.init({ loadMaps: true }))
 			.pipe(autoprefixer())
-			.pipe(dest(config.assetsDir + 'styles/'))
-			.pipe(sourcemaps.write('.'))
+			.pipe(blockFilter)
+			.pipe(editorStyles())
+			.pipe(blockFilter.restore)
+			.pipe(dest(`${config.assetsDir}styles/`))
 			.on('error', config.errorLog)
-			// minify
+			// Minify
 			.pipe(cleanCSS())
 			.pipe(
 				rename({
@@ -32,7 +37,8 @@ export const task = (config) => {
 				})
 			)
 			.on('error', config.errorLog)
-			.pipe(dest(config.assetsDir + 'styles/'))
+			.pipe(dest(`${config.assetsDir}styles/`))
+			// Reload
 			.pipe(filter('**/*.css'))
 	);
 };
