@@ -380,17 +380,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 
 .editor-styles-wrapper ol {
   padding-left: 0;
-  list-style: none;
   counter-reset: item;
-}
-.editor-styles-wrapper ol li:before {
-  margin-right: var(--unit--small);
-  content: counters(item, ".") ". ";
-  counter-increment: item;
-}
-.editor-styles-wrapper ol ol {
-  margin-top: var(--unit--small);
-  padding-left: 1.2em;
 }
 
 .editor-styles-wrapper ul {
@@ -1145,7 +1135,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 .editor-styles-wrapper .wp-block-post-content .alignfull + .alignfull {
   margin-top: 0;
 }
-.editor-styles-wrapper .wp-block-post-content li::marker {
+.editor-styles-wrapper .wp-block-post-content ul li::marker {
   content: "–  ";
 }
 @media screen and (min-width: 37.5625rem) {
