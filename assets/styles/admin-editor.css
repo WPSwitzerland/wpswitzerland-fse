@@ -1085,6 +1085,12 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
   padding-bottom: 75%;
 }
 
+@media screen and (min-width: 100em) {
+  .editor-styles-wrapper .wp-block-group.site-brand {
+    translate: -4.5rem;
+  }
+}
+
 .editor-styles-wrapper .wp-block-image {
   --stack-size: var(--unit--small);
 }
