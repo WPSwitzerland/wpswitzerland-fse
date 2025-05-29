@@ -1137,6 +1137,12 @@ body {
   padding-bottom: 75%;
 }
 
+@media screen and (min-width: 100em) {
+  .wp-block-group.site-brand {
+    translate: -4.5rem;
+  }
+}
+
 .wp-block-image {
   --stack-size: var(--unit--small);
 }
