@@ -39,12 +39,11 @@ class Menu
 
 		if (empty($theme_location = $attributes['menu'] ?? '')) {
 			if ($controller->isContextEdit()) {
-?>
+				?>
 				<div class="c-editormessage c-editormessage--error"><?php _ex('Bitte wÃ¤hlen Sie eine vordefinierte Navigation aus.', 'Menu block editor message', 'sha'); ?></div>
-			<?php
+				<?php
 			}
 		} else {
-
 			?>
 			<div class="wp-block-sht-menu wp-block-sht-menu--<?php echo $theme_location; ?>">
 				<?php
@@ -59,7 +58,7 @@ class Menu
 				?>
 			</div>
 
-<?php
+			<?php
 		}
 		$html = ob_get_contents();
 		ob_end_clean();
