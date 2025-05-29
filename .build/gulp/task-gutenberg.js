@@ -1,14 +1,14 @@
-const filter = require('gulp-filter');
-
 import gulp from 'gulp';
 import webpack from 'webpack';
 import gulpWebpack from 'webpack-stream';
 import rename from 'gulp-rename';
 import uglify from 'gulp-uglify';
-
-const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
+import gulpFilter from 'gulp-filter';
+import DependencyExtractionWebpackPlugin from '@wordpress/dependency-extraction-webpack-plugin';
 
 export const task = (config) => {
+	const jsFilter = gulpFilter(['**/*.js'], { restore: true });
+
 	return (
 		gulp
 			.src([`${config.assetsBuild}gutenberg/blocks.js`])
@@ -26,44 +26,12 @@ export const task = (config) => {
 								{
 									test: /\.css$/i,
 									exclude: /node_modules/,
-									use: [
-										{
-											loader: 'style-loader',
-											options: {
-												sourceMap: false,
-											},
-										},
-										{
-											loader: 'css-loader',
-											options: {
-												sourceMap: false,
-											},
-										},
-									],
+									use: ['style-loader', 'css-loader'],
 								},
 								{
 									test: /\.scss$/i,
 									exclude: /node_modules/,
-									use: [
-										{
-											loader: 'style-loader',
-											options: {
-												sourceMap: false,
-											},
-										},
-										{
-											loader: 'css-loader',
-											options: {
-												sourceMap: false,
-											},
-										},
-										{
-											loader: 'sass-loader',
-											options: {
-												sourceMap: false,
-											},
-										},
-									],
+									use: ['style-loader', 'css-loader', 'sass-loader'],
 								},
 							],
 						},
@@ -80,10 +48,10 @@ export const task = (config) => {
 				)
 			)
 			.on('error', config.errorLog)
-			.pipe(gulp.dest(config.assetsDir + 'gutenberg/'))
+			.pipe(gulp.dest(`${config.assetsDir}gutenberg/`))
 
-			// Minify
-			.pipe(filter(['**/*.js']))
+			// Minify JS
+			.pipe(jsFilter)
 			.pipe(uglify())
 			.pipe(
 				rename({
@@ -91,6 +59,6 @@ export const task = (config) => {
 				})
 			)
 			.on('error', config.errorLog)
-			.pipe(gulp.dest(config.assetsDir + 'gutenberg/'))
+			.pipe(gulp.dest(`${config.assetsDir}gutenberg/`))
 	);
 };
