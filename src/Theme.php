@@ -109,7 +109,6 @@ class Theme
 	private function loadClasses($classes)
 	{
 		foreach ($classes as $class) {
-
 			$instance = new $class();
 
 			if (method_exists($instance, 'run')) {
