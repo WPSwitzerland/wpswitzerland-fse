@@ -9,6 +9,11 @@ const App = ({ element: { dataset }, classNameBase }) => {
 	const { root: api_root } = wpApiSettings;
 	const { url } = dataset;
 
+	const switzerlands = {
+		de: 'Schweiz',
+		en: 'Switzerland',
+		fr: 'Suisse',
+	};
 	let language_full = document.documentElement.lang;
 	const language_short = language_full.substring(0, 2);
 
@@ -56,7 +61,7 @@ const App = ({ element: { dataset }, classNameBase }) => {
 					let dateString = legibleDate({ date_from: event.date, date_to: event.end_date, language_full, language_short });
 
 					if (event.location?.location) {
-						dateString += `, ${event.location.location}`;
+						dateString += `, ${event.location.location.replace(/, (Switzerland|Schweiz|Suisse)/g, '')}`;
 					}
 
 					return (

@@ -14,20 +14,18 @@
 	container-type: inline-size;
 
 	&__entries {
-		display: grid;
-		align-items: flex-start;
-		gap: 1em;
+		--stack-size: 2em;
+		@include stack();
 
 		&--cols-2 {
 			@container eventsApi (min-width: 37rem) {
-				grid-template-columns: repeat(2, 1fr);
+				columns: 2;
 			}
 		}
 
 		&--cols-3 {
 			@container eventsApi (min-width: 37rem) {
-				grid-template-columns: repeat(3, 1fr);
-				gap: 1.5rem;
+				columns: 3;
 			}
 		}
 

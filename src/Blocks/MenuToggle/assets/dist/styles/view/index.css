@@ -98,5 +98,5 @@ body .c-footer {
 }
 .wp-block-sht-menu-toggle[aria-expanded=true] .wp-block-sht-menu-toggle__line:nth-child(3) {
   animation: menutoggle-up-rotate 0.6s ease-out both;
-  width: calc(sqrt(2) * var(--menutoggle-width--open));
+  width: calc(1.4142135624 * var(--menutoggle-width--open));
 }

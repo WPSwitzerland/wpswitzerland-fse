@@ -406,17 +406,7 @@ hr {
 
 ol {
   padding-left: 0;
-  list-style: none;
   counter-reset: item;
-}
-ol li:before {
-  margin-right: var(--unit--small);
-  content: counters(item, ".") ". ";
-  counter-increment: item;
-}
-ol ol {
-  margin-top: var(--unit--small);
-  padding-left: 1.2em;
 }
 
 ul {
@@ -1197,7 +1187,7 @@ ul.is-style-less-gap > * + * {
 .wp-block-post-content .alignfull + .alignfull {
   margin-top: 0;
 }
-.wp-block-post-content li::marker {
+.wp-block-post-content ul li::marker {
   content: "–  ";
 }
 @media screen and (min-width: 37.5625rem) {

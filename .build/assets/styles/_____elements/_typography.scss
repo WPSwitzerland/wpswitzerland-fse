@@ -89,20 +89,20 @@ li {
 
 ol {
 	padding-left: 0;
-	list-style: none;
+	// list-style: none;
 	@extend .h-stack;
 	counter-reset: item;
 
-	li:before {
-		margin-right: var(--unit--small);
-		content: counters(item, '.') '. ';
-		counter-increment: item;
-	}
+	// li:before {
+	// 	margin-right: var(--unit--small);
+	// 	content: counters(item, '.') '. ';
+	// 	counter-increment: item;
+	// }
 
-	ol {
-		margin-top: var(--unit--small);
-		padding-left: 1.2em;
-	}
+	// ol {
+	// 	margin-top: var(--unit--small);
+	// 	padding-left: 1.2em;
+	// }
 }
 
 ul {
