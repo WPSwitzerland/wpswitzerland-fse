@@ -49,7 +49,7 @@ class Assets
 		wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.js', ['jquery'], '3.4.0', true);
 		$deps[] = 'fancybox';
 
-		wp_enqueue_script('sht-script', get_template_directory_uri() . '/assets/scripts/ui' . (!$this->debug ? '.min' : '') . '.js', $deps, filemtime(get_template_directory() . '/assets/scripts/ui' . (!$this->debug ? '.min' : '') . '.js'), true);
+		wp_enqueue_script('sht-script', get_template_directory_uri() . '/assets/scripts/ui.js', $deps, filemtime(get_template_directory() . '/assets/scripts/ui.js'), true);
 		wp_localize_script('sht-script', 'sht_theme', [
 			'directory_uri' => get_template_directory_uri(),
 			'version' => wp_get_theme()->get('Version')
