@@ -1,0 +1,42 @@
+:root {
+	--hd-bcve-background: black;
+	--hd-bcve-background-transparency: 50%;
+}
+
+body .hd-bcve-wrapper .play-button {
+	--hd-play-button-size: 64px;
+	padding: 1rem;
+	border-radius: 50%;
+	box-sizing: content-box;
+	background-color: var(--hd-bcve-background) !important;
+	transform-origin: center;
+	transition: transform .3s;
+
+	@supports(background-color: color-mix(in srgb, var(--hd-bcve-background), transparent var(--hd-bcve-background-transparency)) !important) {
+		background-color: color-mix(in srgb, var(--hd-bcve-background), transparent var(--hd-bcve-background-transparency)) !important;
+	}
+
+	&::after {
+		--hd-play-button-opacity: 1;
+		width: 100%;
+		height: 100%;
+		background: url('../img/icons/play_circle_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.min.svg') center/contain no-repeat;
+		border: none;
+
+		@supports(filter: drop-shadow(0 0 .5em var(--hd-bcve-background))) {
+			filter: drop-shadow(0 0 .5em var(--hd-bcve-background));
+		}
+	}
+}
+
+body .hd-bcve-wrapper:hover .play-button {
+	opacity: 1;
+}
+
+body .hd-bcve-wrapper:hover .play-button:hover {
+	transform: translate(-50%, -50%) scale(1.1);
+}
+
+body .hd-bcve-wrapper:hover .play-button:after {
+	--hd-play-button-opacity: 1;
+}
