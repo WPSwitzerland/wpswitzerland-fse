@@ -60,6 +60,8 @@ class Theme
 				Blocks\Menu\Block::class,
 				Blocks\MenuToggle\Block::class,
 
+				Controller\BlockBindings::class,
+
 				Package\Assets::class,
 				Package\Gutenberg::class,
 				Package\Language::class,
@@ -109,7 +111,6 @@ class Theme
 	private function loadClasses($classes)
 	{
 		foreach ($classes as $class) {
-
 			$instance = new $class();
 
 			if (method_exists($instance, 'run')) {
