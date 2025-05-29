@@ -1,3 +1,7 @@
 .wp-block-post {
-    @extend .h-stack;
+	@extend .h-stack;
+
+	&::marker {
+		content: '' !important;
+	}
 }

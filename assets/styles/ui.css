@@ -1200,6 +1200,10 @@ ul.is-style-less-gap > * + * {
   content: "";
 }
 
+.wp-block-post::marker {
+  content: "" !important;
+}
+
 .wp-block-pullquote.wp-block-pullquote:not(.is-style-solid-color) {
   border-top: 4px solid currentColor;
   border-bottom: 4px solid currentColor;
