@@ -1,0 +1,7 @@
+.wp-block-group {
+	&.site-brand {
+		@media screen and (min-width: 100em) {
+			translate: -4.5rem;
+		}
+	}
+}
