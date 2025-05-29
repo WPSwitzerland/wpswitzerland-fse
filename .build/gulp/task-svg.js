@@ -5,10 +5,7 @@ import svgmin from 'gulp-svgmin';
 
 export const task = (config) => {
 	return gulp
-		.src([
-			config.assetsDir + '**/*.svg',
-			'!' + config.assetsDir + '**/*.min.svg',
-		])
+		.src([config.assetsDir + '**/*.svg', '!' + config.assetsDir + '**/*.min.svg'])
 		.pipe(
 			svgmin({
 				plugins: [
