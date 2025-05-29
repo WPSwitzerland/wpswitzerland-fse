@@ -1,73 +1,61 @@
-import { src, dest } from 'gulp';
-import { globSync } from 'glob';
-import rename from 'gulp-rename';
-import path from 'path';
+import webpack from 'webpack';
 import gulpWebpack from 'webpack-stream';
-
+import { dest } from 'gulp';
+import rename from 'gulp-rename';
+import { globSync } from 'glob';
+import path from 'path';
 import DependencyExtractionWebpackPlugin from '@wordpress/dependency-extraction-webpack-plugin';
 
 export const task = (config) => {
-	return new Promise((resolve) => {
-		const taskPath = `${config.blockScriptsSrc}/**/*.js`,
-			files = globSync(taskPath),
-			entries = {};
+	return new Promise(() => {
+		const files = globSync(config.blockScriptsSrc);
+		const entries = {};
 
 		files.forEach((file) => {
-			if (!path.basename(file).match(/^_/)) {
-				const folders = path.dirname(file).split('/');
-				const folder_last = folders[folders.length - 1];
+			const base = path.basename(file);
+			if (base.startsWith('_')) return;
 
-				if (!folder_last.match(/^_/)) {
-					entries[`${folders[2]}_${folder_last}`] = `./${file}`; // MyBlock_editor.js || MyBlock_view.js
-				}
-			}
+			const folders = path.dirname(file).split('/');
+			const folder_last = folders[folders.length - 1];
+			if (folder_last.startsWith('_')) return;
+
+			entries[`${folders[2]}_${folder_last}`] = path.resolve(file);
 		});
 
-		src([taskPath])
-			.pipe(
-				gulpWebpack({
-					entry: entries,
-					mode: 'production',
-					module: {
-						rules: [
-							{
-								test: /\.js$/,
-								exclude: /node_modules/,
-								loader: 'babel-loader',
-							},
-							{
-								test: /\.css$/i,
-								use: ['style-loader', 'css-loader'],
-							},
-							{
-								test: /\.scss$/i,
-								use: ['style-loader', 'css-loader', 'sass-loader'],
-							},
-						],
-					},
-					output: {
-						filename: '[name].js',
-					},
-					externals: {
-						jquery: 'jQuery',
-					},
-					plugins: [new DependencyExtractionWebpackPlugin()],
-				})
-			)
-			.on('error', config.errorLog)
+		if (!Object.keys(entries).length) {
+			console.log('No valid entries.');
+			return Promise.resolve();
+		}
+
+		return gulpWebpack(
+			{
+				entry: entries,
+				mode: 'production',
+				module: {
+					rules: [
+						{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+						{ test: /\.css$/, use: ['style-loader', 'css-loader'] },
+						{ test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
+					],
+				},
+				output: {
+					filename: '[name].js',
+				},
+				externals: {
+					jquery: 'jQuery',
+				},
+				plugins: [new DependencyExtractionWebpackPlugin()],
+			},
+			webpack
+		)
 			.pipe(
 				rename((path) => {
-					const basenameParts = path.basename.split('_');
-					const targetBasename = basenameParts[1];
-					const targetBasefolder = basenameParts[0];
-					return {
-						dirname: `${config.blockScriptsDist}${targetBasefolder}/assets/dist/scripts/`,
-						basename: targetBasename,
-						extname: path.extname || '.js',
-					};
+					const [folder, name] = path.basename.split('_');
+					path.dirname = `${config.blockScriptsDist}${folder}/assets/dist/scripts/`;
+					path.basename = name;
+					path.extname = '.js';
 				})
 			)
-			.pipe(dest('./'))
-			.on('end', resolve);
+			.pipe(dest('./'));
 	});
 };

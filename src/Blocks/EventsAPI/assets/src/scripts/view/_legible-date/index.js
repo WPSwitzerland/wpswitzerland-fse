@@ -1,5 +1,5 @@
-import addOrdinalSuffix from '../_add-ordinal-suffix';
-import timeArray from '../_time-array';
+import addOrdinalSuffix from '../_add-ordinal-suffix/index.js';
+import timeArray from '../_time-array/index.js';
 
 export const legibleDate = (props) => {
 	const { date_from, date_to, language_short, language_full } = props;

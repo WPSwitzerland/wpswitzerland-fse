@@ -1,6 +1,6 @@
 import { createRoot, useEffect, useState } from '@wordpress/element';
 
-import legibleDate from './_legible-date';
+import legibleDate from './_legible-date/index.js';
 
 const App = ({ element: { dataset }, classNameBase }) => {
 	const [events, setEvents] = useState([]);
