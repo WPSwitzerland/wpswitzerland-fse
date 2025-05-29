@@ -2,6 +2,8 @@
 
 namespace SayHello\Theme\Package;
 
+use SimpleXMLElement;
+
 /**
  * Add RSS Collation functionality
  */
@@ -34,9 +36,12 @@ class RSSCollator
 		add_action('admin_menu', [$this, 'addSettingsPage']);
 		add_action('admin_init', [$this, 'registerSettings']);
 		add_action('init', [$this, 'registerPostType']);
-		add_filter('post_type_link', [$this, 'rssCollatorPostTypeLink'], 10, 2);
+		add_filter('post_type_link', [$this, 'rssCollatorPostLink'], 10, 2);
 		add_filter('manage_' . $this->postType . '_posts_columns', [$this, 'addAdminColumn']);
 		add_action('manage_' . $this->postType . '_posts_custom_column', [$this, 'renderAdminColumn'], 10, 2);
+
+		// redirect archive page to the home page
+		add_action('template_redirect', [$this, 'redirectArchivePage']);
 
 		add_action('sht_wpswitzerland_fse_get_rss', [$this, 'getRssFeedContents']);
 		$this->scheduleCronJob();
@@ -96,6 +101,14 @@ class RSSCollator
 			$this->pageSlug,
 			'custom_settings_section'
 		);
+	}
+
+	public function redirectArchivePage()
+	{
+		if (is_post_type_archive($this->postType)) {
+			wp_redirect(home_url(), 301);
+			exit;
+		}
 	}
 
 	/**
@@ -193,10 +206,16 @@ class RSSCollator
 				$feed_body = wp_remote_retrieve_body($response);
 
 				//	parse $feed_body and get each <item> from the <channel>
-				$feed = simplexml_load_string($feed_body);
+				$feed = @simplexml_load_string($feed_body);
+
+				if (!$feed instanceof SimpleXMLElement) {
+					error_log("Invalid feed at $feedUrl");
+					continue;
+				}
 
 				$feedContents[$feedUrl] = [
 					'title' => $feed->channel->title,
+					'link' => $feed->channel->link,
 					'items' => []
 				];
 
@@ -205,6 +224,7 @@ class RSSCollator
 						'title' => $item->title,
 						'link' => $item->link,
 						'description' => $item->description,
+						'content' => $item->children('content', true)->encoded ?? '', // Use content:encoded if available
 						'pubDate' => $item->pubDate
 					];
 				}
@@ -212,54 +232,45 @@ class RSSCollator
 		}
 
 		if (!empty($feedContents)) {
-
-			$posts = get_posts(array(
+			$posts = get_posts([
 				'numberposts' => -1,
 				'post_type' => $this->postType,
 				'post_status' => 'any'
-			));
+			]);
 
 			foreach ($posts as $post) {
 				wp_delete_post($post->ID, true);
 			}
-		}
 
-		global $wpdb;
-
-		foreach ($feedContents as $feedUrl => $feedContent) {
-
-			foreach ($feedContent['items'] as $feedItem) {
-
+			foreach ($feedContents as $feedUrl => $feedContent) {
 				$source = esc_html($feedContent['title']);
+				$source_link = esc_url($feedContent['link']);
 
-				// $title = "{$source} - {$feedItem['title']}";
-				$title = $feedItem['title'];
-
-				$existingposts = $wpdb->get_results($wpdb->prepare("SELECT * FROM $wpdb->posts WHERE post_title LIKE '%s' AND post_type = '%s'", '%' . $wpdb->esc_like($title) . '%', $this->postType));
-
-				if (!empty($existingposts)) {
-					continue;
-				}
-
-				$postData = [
-					'post_title' => $title,
-					'post_content' => '', //$feedItem['description'],
-					'post_date' => wp_date('Y-m-d H:i:s', strtotime($feedItem['pubDate'])),
-					'post_type' => $this->postType,
-					'post_status' => 'publish',
-					'post_excerpt' => $source,
-				];
-
-				$post_id = wp_insert_post($postData);
-
-				if ($post_id) {
+				foreach ($feedContent['items'] as $feedItem) {
+					// $title = "{$source} - {$feedItem['title']}";
+					$title = $feedItem['title'];
 					$link = sanitize_url($feedItem['link']);
-					update_post_meta($post_id, 'feed_item_url', $link);
 
-					update_post_meta($post_id, 'feed_item_source', $source);
+					$postData = [
+						'post_title' => $title,
+						'post_content' => $feedItem['content'] ?? '',
+						'post_date' => wp_date('Y-m-d H:i:s', strtotime($feedItem['pubDate'])),
+						'post_type' => $this->postType,
+						'post_status' => 'publish',
+						'post_excerpt' => $feedItem['description'] ?? '',
+					];
+
+					$post_id = wp_insert_post($postData);
+
+					if ($post_id) {
+						update_post_meta($post_id, 'feed_item_url', $link);
+						update_post_meta($post_id, 'feed_item_source', $source);
+						update_post_meta($post_id, 'feed_link', $source_link);
+					}
 				}
 			}
 		}
+
 
 		return $feedContents;
 	}
@@ -314,7 +325,7 @@ class RSSCollator
 			],
 			'public' => true,
 			'has_archive' => true,
-			'supports' => ['title', 'custom-fields', 'excerpt'],
+			'supports' => ['title', 'custom-fields', 'excerpt', 'editor'],
 			'menu_icon' => 'dashicons-rss',
 			'show_in_rest' => true,
 			'rewrite' => [
@@ -323,7 +334,7 @@ class RSSCollator
 		]);
 	}
 
-	public function rssCollatorPostTypeLink($link, $post)
+	public function rssCollatorPostLink($link, $post)
 	{
 		if ($post->post_type !== $this->postType) {
 			return $link;
