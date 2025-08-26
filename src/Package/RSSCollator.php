@@ -221,11 +221,11 @@ class RSSCollator
 
 				foreach ($feed->channel->item as $item) {
 					$feedContents[$feedUrl]['items'][] = [
-						'title' => $item->title,
-						'link' => $item->link,
-						'description' => $item->description,
-						'content' => $item->children('content', true)->encoded ?? '', // Use content:encoded if available
-						'pubDate' => $item->pubDate
+						'title'       => (string) $item->title ?? '',
+						'link'        => (string) $item->link ?? '',
+						'description' => (string) $item->description ?? '',
+						'content'     => (string) ($item->children('content', true)->encoded ?? ''),
+						'pubDate'     => (string) $item->pubDate ?? '',
 					];
 				}
 			}
